@@ -6,9 +6,11 @@
       <ul>
         {{- range $clientLogos }}
         <li>
-          <a {{ if .url }} href="{{ .url }}" {{ end }}>
-            <img class="partner-logo" src="{{ printf "images/logos/clients/%s.svg" .logo | relURL }}">
-          </a>
+         <a {{ if .url }} href="{{ .url }}" {{ end }}>
+            <img class="partner-logo" src="{{ printf "images/logos/%s" .logo | relURL }}">
+          </a> 
+
+          <div> This is a test</div>
         </li>
         {{- end }}
       </ul>
