@@ -38,6 +38,7 @@ initialization is by :=
 <nav class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
   <div class="container navbar-banner-box">
     
+    <div class="navbar-logo">
       {{- if $navbarLogo }}
         {{- if $navbarUseBanner }}
         <a class="" href="{{ $navbarLogo.link }}">
@@ -57,7 +58,7 @@ initialization is by :=
         </a>
         {{- end}}
       {{- end}}
-   
+    </div>  
 
 
     <div class="navbar-brand navbar-banner-posburger">
