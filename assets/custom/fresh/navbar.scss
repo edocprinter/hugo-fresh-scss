@@ -20,6 +20,10 @@ $navbar-banner-buttonlabel-color: #FFFFFF !default;
 //
 //=block
 //  @extend %block
+.navba-margin {
+    margin-left: 16px;
+    margin-right: 16px;
+}
 
 .navbar-banner-box {
   //@include sass.block;
@@ -29,8 +33,9 @@ $navbar-banner-buttonlabel-color: #FFFFFF !default;
   color: $box-color;
   //display: block
 
-  border-width: 8px;
-  margin-top: $navbar-banner-margin-top;
+  margin: auto; //$navbar-banner-margin-top;
+  width: 90%;
+  //max-height: 128px;
   //padding: $box-padding
   //box-sizing: content-box
   //flex-direction: column
@@ -45,6 +50,14 @@ $navbar-banner-buttonlabel-color: #FFFFFF !default;
     border-color: white;
     border-style: solid;
     background-color: lightblue;
+}
+
+// .navbar-logo a {
+//     height: 100%
+// }
+
+.navbar-logo img {
+    height: 100%
 }
 
 .navbar-banner-flexh {
