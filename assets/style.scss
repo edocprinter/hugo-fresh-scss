@@ -1,2 +1,21 @@
-@import "bulma/bulma";
+@charset "utf-8";
+
+
+@use "bulma/sass";
 @import "fresh/core";
+
+@import "custom/custom";
+//@forward "custom/fresh/navbar";
+
+
+.navbar-banner-box2 {
+    @include sass.block;
+    //display: block
+  
+   // margin-top: $navbar-banner-margin-top;
+    //padding: $box-padding
+    //box-sizing: content-box
+    //flex-direction: column
+    display: flex;
+  }
+
