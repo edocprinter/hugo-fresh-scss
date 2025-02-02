@@ -1,24 +1,75 @@
-{{- $navbar           := .Site.Params.navbar }}
-{{- $sidebarVisible   := .Params.sidebar | default .Site.Params.sidebar }}
-{{- $navbarLogo       := .Site.Params.navbarlogo }}
-{{- $navbarLogoWidth  := .Site.Params.navbarlogo.width | default 112 }}
-{{- $navbarLogoHeight := .Site.Params.navbarlogo.height | default 28 }}
-<nav class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
-  <div class="container">
-    <div class="navbar-brand">
-      {{- if $navbarLogo}}
-      <a class="navbar-item" href="{{ $navbarLogo.link }}">
-        <img src="{{ printf "images/%s" $navbarLogo.image | relURL }}" alt="" width="{{ $navbarLogoWidth }}" height="{{ $navbarLogoHeight }}">
-      </a>
-      {{- end}}
+{{- $navbar := .Site.Params.navbar }}
+{{- $sidebarVisible := .Params.sidebar | default .Site.Params.sidebar }}
+{{- $navbarLogo := .Site.Params.navbarlogo }}
+{{- $navbarLogoHasWidth := false }}
+{{- $navbarLogoWidth := 112 }}
+{{- $navbarLogoHeight := 28 }}
+{{- if isset .Site.Params.navbarlogo "width" }}
+  {{- $navbarLogoHasWidth = true }}
+  {{- $navbarLogoWidth = .Site.Params.navbarlogo.width | default 112 }}
+{{- else }}
+  {{- $navbarLogoHasWidth = false }}
+  {{- $navbarLogoHeight = .Site.Params.navbarlogo.height | default 28 }}
+{{- end }}
 
+
+{{- $navbarUseBanner := false }}
+
+{{- $navbarLogoStyle := "banner" }}
+{{- $navbarLogoStyle := .Site.Params.navbarlogo.style | default "banner" }}
+
+
+{{- if (eq $navbarLogoStyle "banner") }}
+  {{- $navbarUseBanner = true }}
+{{- end }}
+
+{{ if .Params.sidebar }}
+{{ $sidebarVisible = .Params.sidebar }}
+{{ end }}
+
+
+{{- /* hugo page variables must be defined before using in if else,
+otherwise, it will be treated as a local var within if-else.
+assignment is by =
+initialization is by :=
+*/ -}}
+
+
+<nav class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
+  <div class="container navbar-banner-box">
+    
+      {{- if $navbarLogo }}
+        {{- if $navbarUseBanner }}
+        <a class="" href="{{ $navbarLogo.link }}">
+          {{- if $navbarLogoHasWidth }}
+          <img src="{{ printf "/images/%s" $navbarLogo.image | relURL }}" alt="21321" width="{{ $navbarLogoWidth }}">
+          {{- else }}
+          <img src="{{ printf "/images/%s" $navbarLogo.image | relURL }}" alt="21321" height="{{ $navbarLogoHeight }}">          
+          {{- end }}
+        </a>
+        {{- else }}           
+        <a class="navbar-item" href="{{ $navbarLogo.link }}">
+          {{- if $navbarLogoHasWidth }}
+          <img src="{{ printf "images/%s" $navbarLogo.image | relURL }}" alt="haha  " width="{{ $navbarLogoWidth }}">
+          {{- else }}
+          <img src="{{ printf "images/%s" $navbarLogo.image | relURL }}" alt="asdasd" height="{{ $navbarLogoHeight }}">
+          {{- end }}
+        </a>
+        {{- end}}
+      {{- end}}
+   
+
+
+    <div class="navbar-brand navbar-banner-posburger">
       {{- if $sidebarVisible }}
       <a class="navbar-item is-hidden-desktop is-hidden-tablet">
         <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
           <svg width="1000px" height="1000px">
-            <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
+            <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800">
+            </path>
             <path class="path2" d="M 300 500 L 700 500"></path>
-            <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
+            <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200">
+            </path>
           </svg>
           <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
         </div>
@@ -29,55 +80,58 @@
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>        
       </a>
     </div>
 
-      <div id="navbar-menu" class="navbar-menu is-static">
+    <div id="navbar-menu" class="navbar-menu is-static navbar-banner-posmenu">
 
-        {{- if $sidebarVisible }}
-        <div class="navbar-start">
-          <a class="navbar-item is-hidden-mobile">
-            <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
-              <svg width="1000px" height="1000px">
-                <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
-                <path class="path2" d="M 300 500 L 700 500"></path>
-                <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200"></path>
-              </svg>
-              <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
-            </div>
-          </a>
-        </div>
-        {{- end }}
-
-        <div class="navbar-end">
-          {{- range $navbar }}
-          {{- if .sublinks }}
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              {{ .title }}
-            </a>
-
-            <div class="navbar-dropdown">
-              {{- range .sublinks }}
-              <a href="{{ .url }}" class="navbar-item">
-                {{ .title }}
-              </a>
-              {{- end }}
-            </div>
+      {{- if $sidebarVisible }}
+      <div class="navbar-start">
+        <a class="navbar-item is-hidden-mobile">
+          <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+            <svg width="1000px" height="1000px">
+              <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800">
+              </path>
+              <path class="path2" d="M 300 500 L 700 500"></path>
+              <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200">
+              </path>
+            </svg>
+            <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
           </div>
-          {{- else if .button }}
-          <a href="{{ .url }}" class="navbar-item">
-            <span class="button signup-button rounded secondary-btn raised">
-              {{ .title }}
-            </span>
-          </a>
-          {{- else }}
-          <a href="{{ .url }}" class="navbar-item is-secondary">
+        </a>
+      </div>
+      {{- end }}
+
+      <div class="navbar-end">
+        {{- range $navbar }}
+        {{- if .sublinks }}
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
             {{ .title }}
           </a>
-          {{- end }}
-          {{- end }}
+
+          <div class="navbar-dropdown">
+            {{- range .sublinks }}
+            <a href="{{ .url }}" class="navbar-item">
+              {{ .title }}
+            </a>
+            {{- end }}
+          </div>
         </div>
+        {{- else if .button }}
+        <a href="{{ .url }}" class="navbar-item">
+          <span class="button signup-button rounded secondary-btn raised">
+            {{ .title }}
+          </span>
+        </a>
+        {{- else }}
+        <a href="{{ .url }}" class="navbar-item is-secondary">
+          {{ .title }}
+        </a>
+        {{- end }}
+        {{- end }}
       </div>
+    </div>
   </div>
 </nav>
