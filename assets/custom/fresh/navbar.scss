@@ -14,6 +14,10 @@ $navbar-banner-buttonlabel-color: #FFFFFF !default;
 
 $navbar-logo-max-height: 96px;
 
+// burger related
+$navbar-banner-burger-width: 32px;
+$navbar-banner-burgeritem-height: 4px;
+
 //=block mixin defined by bulma
 //%block
 //  &:not(:last-child)
@@ -47,10 +51,10 @@ $navbar-logo-max-height: 96px;
 
     margin: 16px 32px;
     max-height: $navbar-logo-max-height;
-    border-width: 1px;
-    border-color: white;
-    border-style: solid;
-    background-color: lightblue;
+    //border-width: 1px;
+    //border-color: white;
+    //border-style: solid;
+    //background-color: lightblue;
 }
 
 // .navbar-item img {
@@ -64,9 +68,9 @@ $navbar-logo-max-height: 96px;
   display: block;
   position: relative;
   margin: 0px;
-  border-width: 1px;
-  border-color: yellow;
-  border-style: solid;
+  // border-width: 1px;
+  // border-color: yellow;
+  // border-style: solid;
 }
 
 .navbar-logo img {
@@ -75,9 +79,9 @@ $navbar-logo-max-height: 96px;
   //overflow-clip-margin
   //height: 100%;
   position: relative;
-  border-width: 1px;
-  border-color: red;
-  border-style: solid;
+  // border-width: 1px;
+  // border-color: red;
+  // border-style: solid;
 }
 
 .navbar-banner-flexh {
@@ -115,7 +119,7 @@ $navbar-logo-max-height: 96px;
   align-items: center;
   // appearance: none;
   // background: none;
-  // border: none;
+  border: none;
   // border-radius: var(--bulma-burger-border-radius);
   // color: hsl(var(--bulma-burger-h), var(--bulma-burger-s), var(--bulma-burger-l));
   // cursor: pointer;
@@ -132,8 +136,8 @@ $navbar-logo-max-height: 96px;
 }
 
 .navbar.is-fresh .navbar-burger {
-  width: 2rem;
-  height: 2rem;
+  width: $navbar-banner-burger-width;
+  height: $navbar-banner-burger-width;
 }
 // .navbar.is-fresh .navbar-brand {
 //   min-height: 4rem;
@@ -141,17 +145,17 @@ $navbar-logo-max-height: 96px;
 
 .navbar-burger span {
     //position: relative;
-    display: flex;
-    width: 50%;
-    height: 4px;
+    //display: flex;
+    height: $navbar-banner-burgeritem-height;
     background-color: white;
     // left: 0px;
     // top: 0px;
-    margin: 0 auto 4px auto;
+    margin: 0;
     // background-color: currentColor;
     // display: block;
     // height: var(--bulma-burger-item-height);
-    // left: calc(50% - calc(#{var(--bulma-burger-item-width)}) / 2);
+    width: 60%;
+    left: 20%;
     // position: absolute;
     // transform-origin: center;
     // transition-duration: var(--bulma-duration);
@@ -159,19 +163,24 @@ $navbar-logo-max-height: 96px;
     // transition-timing-function: var(--bulma-easing);
     // width: var(--bulma-burger-item-width);
 
-    // &:nth-child(1),
-    // &:nth-child(2) {
-    //   top: 0;
-    // }
+    &:nth-child(1),
+    &:nth-child(2) {
+      top: 14px;
+      bottom: 18px;
+    }
 
-    // &:nth-child(3) {
-    //   top: 0;
-    // };
+    &:nth-child(3) {
+      top: 6px;
+      bottom: 10px;
+    };
      
-    // &:nth-child(4) {
-    //   top:0;
-    // //  bottom: calc(50% + 10px);
-    // };    
+    &:nth-child(4) {
+      top: 22px;
+      bottom: 26px;
+      margin: 0;
+      //calc(50% + calc($navbar-banner-burgeritem-height)*2);
+    //  bottom: calc(50% + 10px);
+    };    
   }
 
 
