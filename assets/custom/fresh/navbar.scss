@@ -46,18 +46,35 @@ $navbar-banner-buttonlabel-color: #FFFFFF !default;
 
     margin: 16px 32px;
     max-height: 128px;
-    border-width: 4px;
+    border-width: 1px;
     border-color: white;
     border-style: solid;
     background-color: lightblue;
 }
 
-// .navbar-logo a {
-//     height: 100%
+// .navbar-item img {
+//   max-height: 128px;
 // }
 
+.navbar-logo a {
+  //height: auto;
+  //height: 96px;
+  display: block;
+  position: relative;
+  margin: 0px;
+  border-width: 1px;
+  border-color: yellow;
+  border-style: solid;
+}
+
 .navbar-logo img {
-    height: 100%
+  //height: auto;
+  //max-height: 96px;
+  //overflow-clip-margin
+  position: relative;
+  border-width: 1px;
+  border-color: red;
+  border-style: solid;
 }
 
 .navbar-banner-flexh {
@@ -69,7 +86,7 @@ $navbar-banner-buttonlabel-color: #FFFFFF !default;
 .navbar-banner-posmenu {
   position: absolute;
   top: calc(90% - 2rem);
-  right: calc($navbar-banner-burger-posright + 4rem);
+  right: calc($navbar-banner-burger-posright + 2rem);
   //left: 0px
   padding: 0px;
 }
