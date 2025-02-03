@@ -17,6 +17,7 @@ $navbar-logo-max-height: 96px;
 // burger related
 $navbar-banner-burger-width: 32px;
 $navbar-banner-burgeritem-height: 4px;
+$navbar-banner-burgeritem-color: #FFB514;
 
 //=block mixin defined by bulma
 //%block
@@ -147,7 +148,7 @@ $navbar-banner-burgeritem-height: 4px;
     //position: relative;
     //display: flex;
     height: $navbar-banner-burgeritem-height;
-    background-color: white;
+    background-color: $navbar-banner-burgeritem-color;
     // left: 0px;
     // top: 0px;
     margin: 0;
@@ -179,7 +180,7 @@ $navbar-banner-burgeritem-height: 4px;
       bottom: 26px;
       margin: 0;
       //calc(50% + calc($navbar-banner-burgeritem-height)*2);
-    //  bottom: calc(50% + 10px);
+      //  bottom: calc(50% + 10px);
     };    
   }
 
