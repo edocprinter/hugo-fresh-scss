@@ -12,6 +12,7 @@ $navbar-banner-burger-posright: 1rem;
 $navbar-banner-button-color: #4FC1EA !default;
 $navbar-banner-buttonlabel-color: #FFFFFF !default;
 
+$navbar-logo-max-height: 96px;
 
 //=block mixin defined by bulma
 //%block
@@ -20,7 +21,7 @@ $navbar-banner-buttonlabel-color: #FFFFFF !default;
 //
 //=block
 //  @extend %block
-.navba-margin {
+.navbar-margin {
     margin-left: 16px;
     margin-right: 16px;
 }
@@ -45,7 +46,7 @@ $navbar-banner-buttonlabel-color: #FFFFFF !default;
 .navbar-banner-box > .navbar-logo {
 
     margin: 16px 32px;
-    max-height: 128px;
+    max-height: $navbar-logo-max-height;
     border-width: 1px;
     border-color: white;
     border-style: solid;
@@ -59,6 +60,7 @@ $navbar-banner-buttonlabel-color: #FFFFFF !default;
 .navbar-logo a {
   //height: auto;
   //height: 96px;
+  height: 100%;
   display: block;
   position: relative;
   margin: 0px;
@@ -69,8 +71,9 @@ $navbar-banner-buttonlabel-color: #FFFFFF !default;
 
 .navbar-logo img {
   //height: auto;
-  //max-height: 96px;
+  max-height: 96px;
   //overflow-clip-margin
+  //height: 100%;
   position: relative;
   border-width: 1px;
   border-color: red;
