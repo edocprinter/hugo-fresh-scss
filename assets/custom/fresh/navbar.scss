@@ -1,3 +1,5 @@
+@use "../../bulma/sass/utilities/mixins";
+
 //
 // !default => use the value when not defined or null
 // $text prefined text color by bulma
@@ -171,8 +173,24 @@ $section-grey: #fbfbfb;
 @media screen and (min-width: 480px) {
  
   .navbar-menu {
-    align-items: center;
+    align-items: stetch;
     display: flex;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .navbar-menu {
+      flex-grow: 0;
+      flex-shrink: 0;
+  }
+}
+
+
+.navbar-menu {
+  background: lightgreen;
+
+  @include mixins.from(768px) {
+    background: lightblue;
   }
 }
 
@@ -190,13 +208,19 @@ $section-grey: #fbfbfb;
   }
 }
 
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 1024px) {
   .navbar-start {
       justify-content: flex-start;
       margin-inline-end: auto;
   }
 }
 
+@media screen and (min-width: 640px) {
+  .navbar-menu {
+      align-items: stretch;
+
+  }
+}
 //=block mixin defined by bulma
 //%block
 //  &:not(:last-child)
@@ -472,6 +496,18 @@ $section-grey: #fbfbfb;
 
   }
 }
+
+.navbar-dropdown {
+  background: lightgreen;
+
+  @include mixins.from(640px) {
+    position: absolute;
+  }
+  @include mixins.until(640px) {
+    position: absolute;
+  }  
+}
+
 
 .navbar-banner-posburger {  //display: flex
   position: absolute;
