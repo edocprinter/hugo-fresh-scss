@@ -2,24 +2,27 @@
 Sidebar Styles 
 ========================================================================== */
 
+@use "../../bulma/sass/utilities/mixins";
+@use "./variables" as fv;
+
 //Sidebar animated icon trigger
-.menu-icon-wrapper {
+.navbar-sidekick {
     position: relative;
     left: 0;
     top: 0;
     //margin: -12px 0px 0px -12px;
     width: 34px;
     height: 34px;
-    pointer-events: none;
+    pointer-events: auto;
     transition: 0.1s;
     svg {
         position: absolute;
-        top: -18px;
-        left: -18px;
-        transform: scale(0.07);
-        transform-origin: 0 0;
+        //top: -18px;
+        //left: -18px;
+        //transform: scale(0.07);
+        //transform-origin: 0 0;
         path {
-            stroke: $secondary;
+            stroke: fv.$secondary;
             stroke-width: 40px;
             stroke-linecap: round;
             stroke-linejoin: round;
@@ -69,7 +72,7 @@ Sidebar Styles
 
 //Sidebar
 .sidebar {
-    background: $dark-grey;
+    background: fv.$dark-grey;
     width: 280px;
     height: 100%;
     position: fixed;
@@ -87,7 +90,7 @@ Sidebar Styles
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid lighten($dark-grey, 5%);
+        border-bottom: 1px solid lighten(fv.$dark-grey, 5%);
         padding: 0 20px;
         img {
             height: 32px;
@@ -97,12 +100,12 @@ Sidebar Styles
             height: 24px;
         }
         svg {
-            stroke: $white;
+            stroke: fv.$white;
             transform: rotate(0);
             transition: all .3s;
             cursor: pointer;
             &:hover {
-                stroke: $secondary;
+                stroke: fv.$secondary;
                 transform: rotate(180deg);
             }
         }
@@ -121,17 +124,17 @@ Sidebar Styles
                     padding: 20px 25px;
                     display: block;
                     text-decoration: none;
-                    color: $white;
+                    color: fv.$white;
                     &:hover {
                         padding: 20px 25px;
                         display: block;
                         text-decoration: none;
-                        color: $white;
+                        color: fv.$white;
                     }
                 }
                 a span {
                     margin-right: 20px;
-                    color: $white;
+                    color: fv.$white;
                 }
                 &.have-children {
                     ul {
@@ -139,12 +142,12 @@ Sidebar Styles
                     }
                     li {
                         a {
-                            background-color: darken($dark-grey, 5%);
+                            background-color: darken(fv.$dark-grey, 5%);
                             padding-left: 62px;
-                            border-bottom: 1px solid darken($dark-grey, 2%);
+                            border-bottom: 1px solid darken(fv.$dark-grey, 2%);
                             font-size: .8rem;
                             &:hover {
-                                color: $primary;
+                                color: fv.$primary;
                                 padding-left: 62px;
                             }
                         }
@@ -154,7 +157,7 @@ Sidebar Styles
                         top: 27px;
                         right: 30px;
                         content: "\f054";
-                        color: $white;
+                        color: fv.$white;
                         transition: all .5s;
                         font-weight: 200 !important;
                         font-size: .8rem;
@@ -166,7 +169,7 @@ Sidebar Styles
             position: relative;
         }
         li.have-children.active > a, li.have-children.active > a span, li.have-children.active > a span:after {
-            color: $secondary;
+            color: fv.$secondary;
         }
         li.active.have-children span::after {
             -moz-transform: rotate(90deg);

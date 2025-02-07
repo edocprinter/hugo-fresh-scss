@@ -18,16 +18,16 @@ $(document).ready(function(){
     }
 
     //Animate left hamburger icon and open sidebar
-    $('.menu-icon-trigger').on("click", function(e){
+    $('.navbar-sidekick').on("click", function(e){
         e.preventDefault();
-        $('.menu-icon-wrapper').toggleClass('open');
+        $('.navbar-sidekick').toggleClass('open');
         $('.sidebar').toggleClass('is-active');
     });
 
     //Close sidebar
     $('.sidebar-close').on("click", function() {
         $('.sidebar').removeClass('is-active');
-        $('.menu-icon-wrapper').removeClass('open');
+        $('.navbar-sidekick').removeClass('open');
     })
 
     //Sidebar menu
