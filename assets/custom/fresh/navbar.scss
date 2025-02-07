@@ -187,10 +187,11 @@ $section-grey: #fbfbfb;
 
 
 .navbar-menu {
-  background: lightgreen;
+  background: transparent;
+  box-shadow: none;
 
   @include mixins.from(768px) {
-    background: lightblue;
+   // background: lightblue;
   }
 }
 
@@ -410,7 +411,7 @@ $section-grey: #fbfbfb;
 }
 
 .navbar-dropdown {
-  background: lightgreen;
+  //background: lightgreen;
 
   @include mixins.from(640px) {
     position: absolute;
