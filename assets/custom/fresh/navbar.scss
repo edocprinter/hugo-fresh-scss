@@ -418,11 +418,11 @@ $navbar-banner-burgeritem-color: #FFB514;
 
 .navbar-banner-posburger {  //display: flex
   position: absolute;
-  top: calc(50% - 32px);
+  top: calc(50% - 24px);
   right: 2rem; // $navbar-banner-burger-posright;
   //width: 224px
   min-height: 2rem;
-  height: 64px;
+  height: 48px;
   padding: 0px;
   //align-self: flex-end;
   //margin-left: auto;
