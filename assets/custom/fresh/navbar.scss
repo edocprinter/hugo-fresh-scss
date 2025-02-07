@@ -424,7 +424,7 @@ $section-grey: #fbfbfb;
 .navbar-banner-posburger {  //display: flex
   position: absolute;
   bottom: 16px;
-  right: $navbar-banner-burger-posright;
+  right: 2rem; // $navbar-banner-burger-posright;
   //width: 224px
   min-height: 2rem;
   padding: 0px;
@@ -451,6 +451,12 @@ $section-grey: #fbfbfb;
   display: block;
 }
 
+
+//.menu-icon-wrapper svg {
+.navbar-item img, 
+.navbar-item svg {
+    max-height: 1000px;
+}
 // @include desktop {
 //   .navbar-hideondesktop.is-active {
 //     display: none;

@@ -5,11 +5,11 @@
 {{- $navbarLogoWidth := 112 }}
 {{- $navbarLogoHeight := 28 }}
 {{- if isset .Site.Params.navbarlogo "width" }}
-  {{- $navbarLogoHasWidth = true }}
-  {{- $navbarLogoWidth = .Site.Params.navbarlogo.width | default 112 }}
+{{- $navbarLogoHasWidth = true }}
+{{- $navbarLogoWidth = .Site.Params.navbarlogo.width | default 112 }}
 {{- else }}
-  {{- $navbarLogoHasWidth = false }}
-  {{- $navbarLogoHeight = .Site.Params.navbarlogo.height | default 28 }}
+{{- $navbarLogoHasWidth = false }}
+{{- $navbarLogoHeight = .Site.Params.navbarlogo.height | default 28 }}
 {{- end }}
 
 
@@ -20,7 +20,7 @@
 
 
 {{- if (eq $navbarLogoStyle "banner") }}
-  {{- $navbarUseBanner = true }}
+{{- $navbarUseBanner = true }}
 {{- end }}
 
 {{ if .Params.sidebar }}
@@ -34,55 +34,63 @@ assignment is by =
 initialization is by :=
 */ -}}
 
-
-<nav class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
+<!--  is-fresh  -->
+<nav class="navbar is-transparent no-shadow" role="navigation" aria-label="main navigation">
   <div class="container navbar-banner-box">
-    
+
     <div class="navbar-logo">
       {{- if $navbarLogo }}
-        {{- if $navbarUseBanner }}
-        <a class="" href="{{ $navbarLogo.link }}">
-          {{- if $navbarLogoHasWidth }}
-          <img src="{{ printf "/images/%s" $navbarLogo.image | relURL }}" alt="21321" width="{{ $navbarLogoWidth }}">
-          {{- else }}
-          <img src="{{ printf "/images/%s" $navbarLogo.image | relURL }}" alt="21321" height="{{ $navbarLogoHeight }}">          
-          {{- end }}
-        </a>
-        {{- else }}           
-        <a class="navbar-item" href="{{ $navbarLogo.link }}">
-          {{- if $navbarLogoHasWidth }}
-          <img src="{{ printf "images/%s" $navbarLogo.image | relURL }}" alt="haha  " width="{{ $navbarLogoWidth }}">
-          {{- else }}
-          <img src="{{ printf "images/%s" $navbarLogo.image | relURL }}" alt="asdasd" height="{{ $navbarLogoHeight }}">
-          {{- end }}
-        </a>
-        {{- end}}
+      {{- if $navbarUseBanner }}
+      <a class="" href="{{ $navbarLogo.link }}">
+        {{- if $navbarLogoHasWidth }}
+        <img src="{{- printf "/images/%s" $navbarLogo.image | relURL -}}" alt="21321" width="{{ $navbarLogoWidth }}">
+        {{- else }}
+        <img src="{{- printf "/images/%s" $navbarLogo.image | relURL -}}" alt="21321" height="{{ $navbarLogoHeight }}">
+        {{- end }}
+      </a>
+      {{- else }}
+      <a class="navbar-item" href="{{ $navbarLogo.link }}">
+        {{- if $navbarLogoHasWidth }}
+        <img src="{{ printf " images/%s" $navbarLogo.image | relURL }}" alt="haha  " width="{{ $navbarLogoWidth }}">
+        {{- else }}
+        <img src="{{ printf " images/%s" $navbarLogo.image | relURL }}" alt="asdasd" height="{{ $navbarLogoHeight }}">
+        {{- end }}
+      </a>
       {{- end}}
-    </div>  
+      {{- end}}
+    </div>
 
 
     <div class="navbar-brand navbar-banner-posburger">
       {{- if $sidebarVisible }}
       <a class="navbar-item is-hidden-desktop is-hidden-tablet">
         <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
-          <svg width="1000px" height="1000px">
+          <!--         <svg width="1000px"  viewbox=""0 0 1000 1000"> -->
+          <!-- <svg width="100%" viewbox="0 0 1000 1000">
             <path class="path1" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800">
             </path>
             <path class="path2" d="M 300 500 L 700 500"></path>
             <path class="path3" d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200">
             </path>
-          </svg>
+          </svg> -->
+          <svg width="1e3" height="1e3"  stroke="blue"  fill="purple"  fill-opacity="0.5">
+            <path class="path1" d="M3e2 4e2H7e2c2e2.0 2e2 350-1e2 450A4e2 4e2.0 012e2 2e2L8e2 8e2" />
+            <path class="path2" d="M3e2 5e2H7e2" />
+            <path class="path3" d="M7e2 6e2H3e2c-2e2.0-2e2-4e2 1e2-450A4e2 380 0 112e2 8e2L8e2 2e2" />
+          </svg> 
           <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
         </div>
       </a>
       {{- end }}
 
+      <!--
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>   
         <span aria-hidden="true"></span>          
       </a>
+    -->
     </div>
 
     <!--
@@ -155,19 +163,14 @@ initialization is by :=
           </div>
         </div>
       </div>
-  
+
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="field is-grouped">
             <p class="control">
-              <a
-                class="bd-tw-button button"
-                data-social-network="Twitter"
-                data-social-action="tweet"
-                data-social-target="https://bulma.io"
-                target="_blank"
-                href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms"
-              >
+              <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet"
+                data-social-target="https://bulma.io" target="_blank"
+                href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
                 <span class="icon">
                   <i class="fab fa-twitter"></i>
                 </span>
@@ -175,7 +178,8 @@ initialization is by :=
               </a>
             </p>
             <p class="control">
-              <a class="button is-primary" href="https://github.com/jgthms/bulma/releases/download/1.0.2/bulma-1.0.2.zip">
+              <a class="button is-primary"
+                href="https://github.com/jgthms/bulma/releases/download/1.0.2/bulma-1.0.2.zip">
                 <span class="icon">
                   <i class="fas fa-download"></i>
                 </span>
@@ -186,7 +190,7 @@ initialization is by :=
         </div>
       </div>
     </div>
-      
-      
+
+
   </div>
 </nav>
