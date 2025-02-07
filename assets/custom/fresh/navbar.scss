@@ -451,10 +451,20 @@ $navbar-banner-burgeritem-color: #FFB514;
 
 
 //.menu-icon-wrapper svg {
-.navbar-item img, 
+//.navbar-item img, 
 .navbar-item svg {
     max-height: 1000px;
 }
+
+.navbar-item-sidekick {
+  margin: 0;
+  padding: 0;
+}
+
+a.navbar-item-sidekick:hover, a.navbar-item-sidekick:focus {
+  background-color: transparent;
+}
+
 
 // .menu-icon-wrapper svg {
 //   position: absolute;
