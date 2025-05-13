@@ -1,0 +1,49 @@
+[module]
+  replacements = "github.com/jgthms/bulma -> bulma"
+
+  [[module.imports]]
+  path = "github.com/jgthms/bulma"
+
+    [[module.imports.mounts]]
+    source = "../bulma"
+    target = "assets/bulma"
+
+    # [[module.imports.mounts]]
+    # source = "bulma-rtl.sass"
+    # target = "assets/bulma/bulma-rtl.sass"
+
+    # [[module.imports.mounts]]
+    # source = "sass"
+    # target = "assets/bulma/sass"
+
+    # [[module.imports.mounts]]
+    # source = "sass/base"
+    # target = "assets/bulma/sass/base"
+
+    # [[module.imports.mounts]]
+    # source = "sass/components"
+    # target = "assets/bulma/sass/components"
+
+    # [[module.imports.mounts]]
+    # source = "sass/elements"
+    # target = "assets/bulma/sass/elements"
+
+    # [[module.imports.mounts]]
+    # source = "sass/form"
+    # target = "assets/bulma/sass/form"
+
+    # [[module.imports.mounts]]
+    # source = "sass/grid"
+    # target = "assets/bulma/sass/grid"
+
+    # [[module.imports.mounts]]
+    # source = "sass/helpers"
+    # target = "assets/bulma/sass/helpers"
+
+    # [[module.imports.mounts]]
+    # source = "sass/layout"
+    # target = "assets/bulma/sass/layout"
+
+    # [[module.imports.mounts]]
+    # source = "sass/utilities"
+    # target = "assets/bulma/sass/utilities"
