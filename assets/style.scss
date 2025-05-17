@@ -1,21 +1,48 @@
 @charset "utf-8";
 
+//@use "bulma/sass/utilities" with (
+//  $navbar-background-color: hsl(221,14%,100%)
+//);
+$purple: #8a4d76;
+$pink: #fa7c91;
+$brown: #757763;
+$beige-light: #d0d1cd;
+$beige-lighter: #eff0eb;
+$paperless-color-green: #ADB96E !default;
 
-@use "bulma/sass";
+// Override global Sass variables from the /utilities folder
+@use "bulma/sass" as bulma with (
+  $scheme-main: yellow
+  //$paperless-color-green
+  //$grey-dark: $brown,
+  //$grey-light: $beige-light,
+
+);
+
+//@use "bulma/sass" as bulma;
+@use "bulma/sass/utilities/mixins" as bm;
+
+// use import for backward compatibility without namespaces
 @import "fresh/core";
-
 @import "custom/custom";
 //@forward "custom/fresh/navbar";
 
 
-// .navbar-banner-box2 {
-//     @include sass.block;
-//     //display: block
-  
-//    // margin-top: $navbar-banner-margin-top;
-//     //padding: $box-padding
-//     //box-sizing: content-box
-//     //flex-direction: column
-//     display: flex;
-// }
+
+// examples for calling variables, functions, mixins from @use "bulma/sass"
+.navbar-banner-box2 {
+  @include bm.center(5rem, 5rem);
+  //display: block
+
+  // sass is the namespace when calling @use "bulma"
+  border-color: bulma.bulmaDarken(bulma.$blue, 25%);
+  border-style: solid;
+  border-width: 10px;
+
+  // margin-top: $navbar-banner-margin-top;
+  //padding: $box-padding
+  //box-sizing: content-box
+  //flex-direction: column
+  display: flex;
+}
 

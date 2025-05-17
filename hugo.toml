@@ -1,11 +1,14 @@
 [module]
+  # when this theme is included as legacy theme in config.toml, we use replacements here
+  # if this theme is referenced as a module, the replacement shall be done in go.mod
   replacements = "github.com/jgthms/bulma -> bulma"
 
   [[module.imports]]
   path = "github.com/jgthms/bulma"
 
     [[module.imports.mounts]]
-    source = "../bulma"
+    # source is the directory relative to the folder where bulma installed
+    source = "."
     target = "assets/bulma"
 
     # [[module.imports.mounts]]

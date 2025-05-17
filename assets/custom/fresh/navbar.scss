@@ -1,5 +1,6 @@
 @use "../../bulma/sass/utilities/mixins";
-@use "./variables" as fv;
+@use "bulma/sass";
+// @use "./variables" as fv;
 //
 // !default => use the value when not defined or null
 // $text prefined text color by bulma
@@ -22,157 +23,186 @@ $navbar-banner-burgeritem-height: 4px;
 $navbar-banner-burgeritem-color: #FFB514;
 
 
+.hero .navbar.is-fresh {
+    background-color: $paperless-color-green;
+
+}
 
 //Navbar
 .navbar.is-fresh {
-  position: relative;
-  min-height: 3.8rem;
-  transition: all .3s;
-  z-index: 99;
-  .container {
-      min-height: 4rem;
-  }
-  &.no-shadow {
-      box-shadow: none !important;
-  }
-  //Responsive menu icon
-  .navbar-burger {
-      width: 4rem;
-      height: 4rem;
-  }
-  //Brand
-  .navbar-brand {
-      min-height: 4rem;
-      img {
-          max-height: 36px !important;
-          height: 36px;
-      }
-      //Removing navbar item default hover behaviour
-      &:hover {
-          .navbar-item {
-              background: transparent !important;
-          }
-      }
-  }
-  .navbar-end {
-      //background-color: green;
-      align-items: center;
-  }
-  //Navbar items
-  .navbar-item {
-      color: fv.$medium-grey;
-      &.is-secondary {
-          &:hover {
-              color: fv.$secondary !important;
-          }
-      }
-      &.has-dropdown {
+    position: relative;
+    min-height: 3.8rem;
+    transition: all .3s;
+    z-index: 99;
 
-          padding: 10px 0;
-          .navbar-link {
-              color: fv.$medium-grey;
-              &:after {
-                  top: 55%;
-                  height: 0.5em;
-                  width: 0.5em;
-                  border-width: 2px;
-                  border-color: fv.$muted-grey;
-              }
-          }
-          .navbar-dropdown {
-              top: 3.4rem;
-              min-width: 220px;
-              margin-top: 4px;
-              border-top-color: fv.$secondary;
-              .navbar-item {
-                  padding: 10px 20px;
-              }
-          }
-          &:hover {
-              .navbar-link {
-                  color: fv.$secondary;
-                  &:after {
-                      border-color: fv.$secondary;
-                  }
-              }
-          }
-      }
-      .signup {
-          display: block;
-          line-height: 0;
-          font-size: .9rem !important;
-      }
-  }
+    .container {
+        min-height: 4rem;
+    }
 
-  //Fixed navbar modifier
-  &.is-fixed {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      min-height: 4rem !important;
-      background: green;
-      box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.12);
-      a {
-          color: fv.$blue-grey;
-          &:hover {
-              color: fv.$primary;
-          }
-      }
-  }
+    &.no-shadow {
+        box-shadow: none !important;
+    }
+
+    //Responsive menu icon
+    .navbar-burger {
+        width: 4rem;
+        height: 4rem;
+    }
+
+
+    //Brand
+    .navbar-brand {
+        min-height: 4rem;
+
+        .navbar-item img,
+        .navbar-item svg {
+            max-height: 96px;
+        }
+
+        //Removing navbar item default hover behaviour
+        &:hover {
+            .navbar-item {
+                background: transparent !important;
+            }
+        }
+    }
+
+    .navbar-end {
+        //background-color: green;
+        align-items: center;
+    }
+
+    // Navbar items
+    .navbar-item {
+        color: $medium-grey;
+
+        &.is-secondary {
+            &:hover {
+                color: $secondary !important;
+            }
+        }
+
+        &.has-dropdown {
+            // padding: 10px 0;
+            .navbar-link {
+                color: $medium-grey;
+
+                &:after {
+                    top: 55%;
+                    height: 0.5em;
+                    width: 0.5em;
+                    border-width: 2px;
+                    border-color: $muted-grey;
+                }
+            }
+
+            .navbar-dropdown {
+                top: 3.4rem;
+                min-width: 220px;
+                margin-top: 4px;
+                border-top-color: $secondary;
+
+                .navbar-item {
+                    padding: 10px 20px;
+                }
+            }
+
+            &:hover {
+                .navbar-link {
+                    color: $secondary;
+
+                    &:after {
+                        border-color: $secondary;
+                    }
+                }
+            }
+        }
+
+        .signup {
+            display: block;
+            line-height: 0;
+            font-size: .9rem !important;
+        }
+    }
+
+    //Fixed navbar modifier
+    &.is-fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 4rem !important;
+        background: green;
+        box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.12);
+
+        a {
+            color: $blue-grey;
+
+            &:hover {
+                color: $primary;
+            }
+        }
+    }
 }
 
 //Cloned fixed navbar
 #navbar-clone {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: white; //fv.$white;
-  transform: translateY(-100%);
-  z-index: 100;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.12);
-  &.is-active {
-      transform: translateY(0); 
-  }
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white; //$white;
+    transform: translateY(-100%);
+    z-index: 100;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.12);
+
+    &.is-active {
+        transform: translateY(0);
+    }
 }
 
 .navbar-dropdown {
-  font-size: 0.875rem;
-  padding-bottom: 0.75rem;
-  padding-top: 0.5rem;
+    font-size: 0.875rem;
+    padding-bottom: 0.75rem;
+    padding-top: 0.5rem;
 }
 
-
-// @media screen and (min-width: 1024px) {
-//   .navbar-menu {
-//       flex-grow: 0;
-//       flex-shrink: 0;
-//   }
-// }
-
+.navbar-divider {
+    //background-color: hsl(var(--bulma-navbar-h), var(--bulma-navbar-s), var(--bulma-navbar-divider-background-l));
+    background-color: var(--bulma-navbar-dropdown-background-color);
+    border-top: 1px solid red;
+    display: block;
+    height: var(--bulma-navbar-divider-height);
+    margin: 0 0;
+}
 
 .navbar-menu {
-  background: transparent;
-  box-shadow: none;
+    background: transparent;
+    box-shadow: none;
 
-  @include mixins.until(480px) {
-    display: none;
-  }  
-  @include mixins.from(480px) {
-    align-items: center;
-    text-align: left;
-    display: flex;
-  }  
-  @include mixins.from(768px) {
-   // background: lightblue;
-  }
+    // make the dropdown always invisible when no mouse hover
+    //& .navbar-dropdown {
+    //    opacity: 0;
+    //    position: absolute;
+    //}
+
+    @include mixins.until(480px) {
+        display: none;
+    }
+    @include mixins.from(480px) {
+        align-items: center;
+        text-align: left;
+        display: flex;
+    }
+    @include mixins.from(768px) {
+        // background: lightblue;
+    }
 }
 
 .navbar-menu .navbar-start {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 
 // @media screen and (max-width: 767px) {
@@ -183,17 +213,17 @@ $navbar-banner-burgeritem-color: #FFB514;
 
 
 @media screen and (min-width: 640px) {
-  .navbar, .navbar-start, .navbar-end {
-      align-items: center;
-      display: flex;
-  }
+    .navbar, .navbar-start, .navbar-end {
+        align-items: center;
+        display: flex;
+    }
 }
 
 @media screen and (min-width: 1024px) {
-  .navbar-start {
-      justify-content: flex-start;
-      margin-inline-end: auto;
-  }
+    .navbar-start {
+        justify-content: flex-start;
+        margin-inline-end: auto;
+    }
 }
 
 
@@ -210,66 +240,61 @@ $navbar-banner-burgeritem-color: #FFB514;
 }
 
 .navbar-banner-box {
-  //@include sass.block;
-  background-color: $navbar-banner-background-color;
-  border-radius: $navbar-banner-border-radius;
-  //box-shadow: $box-shadow;
-  color: $box-color;
-  //display: block
+    //@include sass.block;
+    background-color: $navbar-banner-background-color;
+    border-radius: $navbar-banner-border-radius;
+    //box-shadow: $box-shadow;
+    color: $box-color;
+    //display: block
 
-  margin: auto; //$navbar-banner-margin-top;
-  width: 90%;
-  //max-height: 128px;
-  //padding: $box-padding
-  //box-sizing: content-box
-  //flex-direction: column
-  display: flex;
+    margin: auto; //$navbar-banner-margin-top;
+    width: 90%;
+    //max-height: 128px;
+    //padding: $box-padding
+    //box-sizing: content-box
+    //flex-direction: column
+    display: flex;
 }
 
 
 .navbar-banner-box > .navbar-logo {
-  margin: 16px 32px;
-  max-height: $navbar-logo-max-height;
+    margin: 16px 32px;
+    max-height: $navbar-logo-max-height;
 
-  @include mixins.from(640px) {
-    max-width: 60%;
-  }
-  @include mixins.until(640px) {
-    max-width: 40%;
-    min-width: 120px;
-  } 
+    @include mixins.from(640px) {
+        max-width: 60%;
+    }
+    @include mixins.until(640px) {
+        max-width: 40%;
+        min-width: 120px;
+    }
 }
 
 .navbar-logo a {
-  //height: auto;
-  //height: 96px;
-  height: 100%;
-  display: block;
-  position: relative;
-  margin: 0px;
+    //height: auto;
+    //height: 96px;
+    height: 100%;
+    display: block;
+    position: relative;
+    margin: 0px;
 }
 
 .navbar-logo img {
-  //height: auto;
-  max-height: 96px;
-  //overflow-clip-margin
-  //height: 100%;
-  position: relative;
-  
+    max-height: $navbar-logo-max-height;
+    position: relative;
 }
 
 .navbar-banner-flexh {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
-
 .navbar-banner-posmenu {
-  position: absolute;
-  top: calc(90% - 2rem);
-  right: calc($navbar-banner-burger-posright + 2rem);
-  //left: 0px
-  padding: 0px;
+    position: absolute;
+    top: calc(90% - 2rem);
+    right: calc($navbar-banner-burger-posright + 2rem);
+    //left: 0px
+    padding: 0px;
 }
 
 
@@ -285,34 +310,35 @@ $navbar-banner-burgeritem-color: #FFB514;
 // }
 
 .navbar > .container.navbar-banner-box {
-  display: flex;
+    display: flex;
 }
 
 
 .navbar-burger {
-  align-items: center;
-  // appearance: none;
-  // background: none;
-  border: none;
-  // border-radius: var(--bulma-burger-border-radius);
-  // color: hsl(var(--bulma-burger-h), var(--bulma-burger-s), var(--bulma-burger-l));
-  // cursor: pointer;
-  // display: inline-flex;
-  // flex-direction: column;
-  // flex-shrink: 0;
-  // height: 2.5rem;
-  // justify-content: center;
-  // position: relative;
-  // vertical-align: top;
-  width: 1rem;
+    align-items: center;
+    // appearance: none;
+    // background: none;
+    border: none;
+    // border-radius: var(--bulma-burger-border-radius);
+    // color: hsl(var(--bulma-burger-h), var(--bulma-burger-s), var(--bulma-burger-l));
+    // cursor: pointer;
+    // display: inline-flex;
+    // flex-direction: column;
+    // flex-shrink: 0;
+    // height: 2.5rem;
+    // justify-content: center;
+    // position: relative;
+    // vertical-align: top;
+    width: 1rem;
 
-  margin: 0;
+    margin: 0;
 }
 
 .navbar.is-fresh .navbar-burger {
-  width: $navbar-banner-burger-width;
-  height: $navbar-banner-burger-width;
+    width: $navbar-banner-burger-width;
+    height: $navbar-banner-burger-width;
 }
+
 // .navbar.is-fresh .navbar-brand {
 //   min-height: 4rem;
 // }
@@ -339,130 +365,126 @@ $navbar-banner-burgeritem-color: #FFB514;
 
     &:nth-child(1),
     &:nth-child(2) {
-      top: 14px;
-      bottom: 18px;
+        top: 14px;
+        bottom: 18px;
     }
 
     &:nth-child(3) {
-      top: 6px;
-      bottom: 10px;
-    };
-     
+        top: 6px;
+        bottom: 10px;
+    }
+;
+
     &:nth-child(4) {
-      top: 22px;
-      bottom: 26px;
-      margin: 0;
-      //calc(50% + calc($navbar-banner-burgeritem-height)*2);
-      //  bottom: calc(50% + 10px);
-    };    
-  }
+        top: 22px;
+        bottom: 26px;
+        margin: 0;
+        //calc(50% + calc($navbar-banner-burgeritem-height)*2);
+        //  bottom: calc(50% + 10px);
+    }
+;
+}
 
+//.navbar-item.is-hoverable:hover .navbar-dropdown.is-boxed {
+//    //opacity: 1;
+//    display: block;
+//    // background-color: lightblue;
+//}
 
-  // navbar-dropdown
-.navbar-item.is-hoverable .navbar-dropdown.is-boxed {
-  //opacity: 0;
-  display: none;
-  position: absolute;
-  // background-color: lightblue;
-
-  @include mixins.from(480px) {
-  
+.navbar-dropdown.is-boxed  {
+    opacity: 0;
+    position: absolute;
     border-radius: var(--bulma-navbar-dropdown-boxed-radius);
-    // //border-top: none;
-    //border-style: solid;
-    //border-width: 1px;
-    // border-color: var(--bulma-navbar-dropdown-border-color);
-    // //box-shadow: var(--bulma-navbar-dropdown-boxed-shadow);
-    // background-color:#999;
+    box-shadow: var(--bulma-navbar-dropdown-boxed-shadow);
 
     pointer-events: auto;
 
-    transform: translateY(0px);
-    transition-duration: var(--bulma-duration);
-    transition-property: opacity, transform;
-    margin-top: 0px;
+    //display: none;
+    // background-color: lightblue;
 
-    padding: 0 0;
-    background-color: transparent;
-    overflow: clip;
+    @include mixins.from(480px) {
+        transform: translateY(0px);
+        transition-duration: var(--bulma-duration);
+        transition-property: opacity, transform;
+        margin-top: 0px;
 
-    .navbar-item {
-      //background-color: #80004e92; //transparent;
-      //opacity: 0.5;
-      text-align: left !important;
-    }    
-    .navbar-item:hover {
-      //background-color: transparent;
-      //opacity: 0.5;
-      text-align: left;
-    }        
-  }  
+        padding: 0 0;
+        background-color: transparent;
+        overflow: clip;
+
+        .navbar-item {
+            //background-color: #80004e92; //transparent;
+            //opacity: 0.5;
+            text-align: left !important;
+        }
+        .navbar-item:hover {
+            //background-color: transparent;
+            //opacity: 0.5;
+            text-align: left;
+        }
+    }
 }
 
-.navbar-item.is-hoverable:hover .navbar-dropdown.is-boxed {
-  //opacity: 1;
-  display:block;
-  // background-color: lightblue;
+.navbar-item.has-dropdown.is-hoverable:hover .navbar-dropdown.is-boxed {
+    opacity: 1;
+    display: block;
 }
 
 :root {
-  --bulma-navbar-dropdown-arrow: red !important;
+    --bulma-navbar-dropdown-arrow: red !important;
 }
 
 .navbar-link:not(.is-arrowless)::after {
-  border-color: var(--bulma-navbar-dropdown-arrow);
-  //margin-top: 0em;
- // inset-inline-end: 4em;
+    border-color: var(--bulma-navbar-dropdown-arrow);
+    //margin-top: 0em;
+    // inset-inline-end: 4em;
 }
 
 
-.navbar-banner-posburger {  //display: flex
-  position: absolute;
-  top: calc(50% - 24px);
-  right: 2rem; // $navbar-banner-burger-posright;
-  //width: 224px
-  min-height: 2rem;
-  height: 48px;
-  padding: 0px;
-  //align-self: flex-end;
-  //margin-left: auto;
+.navbar-banner-posburger { //display: flex
+    position: absolute;
+    top: calc(50% - 24px);
+    right: 2rem; // $navbar-banner-burger-posright;
+    //width: 224px
+    min-height: 2rem;
+    height: 48px;
+    padding: 0px;
+    //align-self: flex-end;
+    //margin-left: auto;
 }
 
 
-.navbar.is-fresh .navbar-banner-posburger {  //display: flex
-  min-height: 2rem;
+.navbar.is-fresh .navbar-banner-posburger { //display: flex
+    min-height: 2rem;
 }
 
 .navbar-banner-posright {
-  position: absolute;
-  right: 32px;
-  padding: 0px;
+    position: absolute;
+    right: 32px;
+    padding: 0px;
 }
 
 .navbar-hideondesktop {
-  display: none;
+    display: none;
 }
+
 .navbar-item.navbar-hideondesktop {
-  display: none;
+    display: none;
 }
+
 .navbar-hideondesktop.is-active {
-  display: block;
+    display: block;
 }
 
 
-//.menu-icon-wrapper svg {
-//.navbar-item img, 
-.navbar-item svg {
-    max-height: 1000px;
-}
 
 .navbar-item-sidekick {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 a.navbar-item-sidekick:hover, a.navbar-item-sidekick:focus {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 
@@ -484,56 +506,63 @@ a.navbar-item-sidekick:hover, a.navbar-item-sidekick:focus {
 // }
 
 .edocbtn-download {
-  border-radius: 16px;
-  box-shadow: rgba(0,0,0,.30) 0 1px 2px;
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, .30) 0 1px 2px;
 
-  &.cta {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 600;
-  }  //padding: 26px 40px 26px 40px
-  width: 256px;
-  height: 80px;
-  border-bottom-color: #ccc;
-  border-top-color: #efefef;
-  border: 1px solid #e0e0e0;
+    &.cta {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
 
-  //background: -webkit-linear-gradient(rgba(126,209,238,.70), rgba(126,209,238,1.0))
-  background-color: $navbar-banner-button-color;
-  color: $navbar-banner-buttonlabel-color;
+    //padding: 26px 40px 26px 40px
+    width: 256px;
+    height: 80px;
+    border-bottom-color: #ccc;
+    border-top-color: #efefef;
+    border: 1px solid #e0e0e0;
 
-  //vertical-align: middle
-  text-align: center;
+    //background: -webkit-linear-gradient(rgba(126,209,238,.70), rgba(126,209,238,1.0))
+    background-color: $navbar-banner-button-color;
+    color: $navbar-banner-buttonlabel-color;
 
-  // when container is flex, the containing div will auto center if margin is auto
-  display: flex;
-  // display: block
-  // position must be relative or absolute for containing block to do absolute positioning
-  position: relative;
-  //position: absolute
-  margin: 8px 0;
-  transition: all 0.5s;
+    //vertical-align: middle
+    text-align: center;
+
+    // when container is flex, the containing div will auto center if margin is auto
+    display: flex;
+    // display: block
+    // position must be relative or absolute for containing block to do absolute positioning
+    position: relative;
+    //position: absolute
+    margin: 8px 0;
+    transition: all 0.5s;
 }
 
 
 // sass is very sensible on tab and space indentation, must be tab or spaces consistently
 .edocbtn-download:link {
-  text-decoration: none;
+    text-decoration: none;
 }
-.edocbtn-download:hover {  // background-color: #F90;
-  //background: -webkit-linear-gradient(rgba(126,209,238,0.2), rgba(126,209,238,0.6))
-  color: white;
+
+.edocbtn-download:hover { // background-color: #F90;
+    //background: -webkit-linear-gradient(rgba(126,209,238,0.2), rgba(126,209,238,0.6))
+    color: white;
 }
+
 .edocbtn-download.raised:hover {
-  box-shadow: 0 14px 26px -12px rgba(79, 193, 234, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(79, 193, 234, 0.2) !important;
-  opacity: 0.8;
+    box-shadow: 0 14px 26px -12px rgba(79, 193, 234, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(79, 193, 234, 0.2) !important;
+    opacity: 0.8;
 }
-.edocbtn-label {  //border: 1px solid #73AD21
-  width: 160px;
-  height: 36px;
-  margin: auto;
-  margin-left: 16px;
-}//display: flex
+
+.edocbtn-label { //border: 1px solid #73AD21
+    width: 160px;
+    height: 36px;
+    margin: auto;
+    margin-left: 16px;
+}
+
+//display: flex
 //margin-left: 0
 //margin-top: 0px
 //vertical-align: middle
@@ -542,48 +571,50 @@ a.navbar-item-sidekick:hover, a.navbar-item-sidekick:focus {
 //left: 16px
 //top: 8px
 
-.edocbtn-icon {  //display: flex
-  cursor: pointer;
-  max-width: 64px;
-  width: 64px;
-  height: 64px;
-  position: absolute;
-  right: 8px;
-  top: 8px;
+.edocbtn-icon { //display: flex
+    cursor: pointer;
+    max-width: 64px;
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    right: 8px;
+    top: 8px;
 }
 
-.herobody-edoc {  // for overriding .hero-body
-  padding: 0.25rem 0.25rem;
-}// padding-top: 0rem
+.herobody-edoc { // for overriding .hero-body
+    padding: 0.25rem 0.25rem;
+}
+
+// padding-top: 0rem
 // padding-right: 0rem
 // padding-bottom: 0rem
 // padding-left: 0rem
 
-.herofig-edoc {  //bottom: 0
-  //left: 0
-  //position: absolute
-  //right: 0
-  //top: 0
-  // use padding-top in percentage will keep the width/height ratio fixed as designed
-  width: 100%;
-  padding-top: 120%;
-  //padding: 26px 40px 26px 40px
-  margin-top: 16px;
-  margin-left: auto;
-  margin-right: auto;
-  border: none;
-  border-radius: 32px;
-  overflow: hidden;
-  box-shadow: 0 0 24px 24px white inset;
+.herofig-edoc { //bottom: 0
+    //left: 0
+    //position: absolute
+    //right: 0
+    //top: 0
+    // use padding-top in percentage will keep the width/height ratio fixed as designed
+    width: 100%;
+    padding-top: 120%;
+    //padding: 26px 40px 26px 40px
+    margin-top: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 0 24px 24px white inset;
 }
 
 .fig-as-background {
-  background-image: var(--background-imgpath);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  //height: 100%
-  max-width: 540px;
-  // min-height: 400px
-  //padding-bottom: 32px
+    background-image: var(--background-imgpath);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    //height: 100%
+    max-width: 540px;
+    // min-height: 400px
+    //padding-bottom: 32px
 }
