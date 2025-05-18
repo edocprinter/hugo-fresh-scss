@@ -1,5 +1,6 @@
 @use "../../bulma/sass/utilities/mixins";
-@use "bulma/sass";
+@use "bulma/sass" as bulma;
+@use 'sass:color';
 // @use "./variables" as fv;
 //
 // !default => use the value when not defined or null
@@ -22,10 +23,10 @@ $navbar-banner-burger-width: 32px;
 $navbar-banner-burgeritem-height: 4px;
 $navbar-banner-burgeritem-color: #FFB514;
 
+$navbar-theme-color: var(--bulma-navbar-background-color);
 
 .hero .navbar.is-fresh {
-    background-color: $paperless-color-green;
-
+   background-color: bulma.$navbar-background-color;
 }
 
 //Navbar
@@ -48,7 +49,6 @@ $navbar-banner-burgeritem-color: #FFB514;
         width: 4rem;
         height: 4rem;
     }
-
 
     //Brand
     .navbar-brand {
@@ -180,11 +180,13 @@ $navbar-banner-burgeritem-color: #FFB514;
     background: transparent;
     box-shadow: none;
 
-    // make the dropdown always invisible when no mouse hover
-    //& .navbar-dropdown {
-    //    opacity: 0;
-    //    position: absolute;
-    //}
+    a.navbar-item:focus, a.navbar-item:hover {
+        //background-color: var(--bulma-navbar-background-color);
+        //background-color: lighten(var(--bulma-navbar-background-color), 10%);
+        background-color: lighten(bulma.$navbar-background-color, 10%);
+        //var(--bulma-navbar-tab-hover-background-color);
+        //border-bottom-color: var(--bulma-navbar-tab-hover-border-bottom-color);
+    }
 
     @include mixins.until(480px) {
         display: none;
@@ -205,12 +207,14 @@ $navbar-banner-burgeritem-color: #FFB514;
     flex-wrap: nowrap;
 }
 
-// @media screen and (max-width: 767px) {
-//   .navbar-item {
-//       text-align: center !important;
-//   }
-// }
 
+
+.navbar-item.has-dropdown.is-hoverable:hover .navbar-dropdown.is-boxed,
+.navbar-item.has-dropdown.is-hoverable:focus .navbar-dropdown.is-boxed,
+.navbar-item.has-dropdown.is-hoverable:focus-within .navbar-dropdown.is-boxed, {
+    opacity: 1;
+    display: block;
+}
 
 @media screen and (min-width: 640px) {
     .navbar, .navbar-start, .navbar-end {
@@ -227,13 +231,6 @@ $navbar-banner-burgeritem-color: #FFB514;
 }
 
 
-//=block mixin defined by bulma
-//%block
-//  &:not(:last-child)
-//    margin-bottom: 1.5rem
-//
-//=block
-//  @extend %block
 .navbar-margin {
     margin-left: 16px;
     margin-right: 16px;
@@ -298,16 +295,6 @@ $navbar-banner-burgeritem-color: #FFB514;
 }
 
 
-// @include desktop {
-//   .navbar-banner-posmenu {
-//     position: absolute;
-//     top: 65%;
-//     right: $navbar-banner-burger-posright + 32px;
-//     //left: 0px
-//     padding: 0px;
-//   }
-// // select .container and .navbar-banner-box whose parent is .navbar
-// }
 
 .navbar > .container.navbar-banner-box {
     display: flex;
@@ -385,11 +372,6 @@ $navbar-banner-burgeritem-color: #FFB514;
 ;
 }
 
-//.navbar-item.is-hoverable:hover .navbar-dropdown.is-boxed {
-//    //opacity: 1;
-//    display: block;
-//    // background-color: lightblue;
-//}
 
 .navbar-dropdown.is-boxed  {
     opacity: 0;
@@ -425,10 +407,7 @@ $navbar-banner-burgeritem-color: #FFB514;
     }
 }
 
-.navbar-item.has-dropdown.is-hoverable:hover .navbar-dropdown.is-boxed {
-    opacity: 1;
-    display: block;
-}
+
 
 :root {
     --bulma-navbar-dropdown-arrow: red !important;

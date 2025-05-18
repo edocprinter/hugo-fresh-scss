@@ -1,4 +1,5 @@
 @charset "utf-8";
+@use 'sass:color';
 
 //@use "bulma/sass/utilities" with (
 //  $navbar-background-color: hsl(221,14%,100%)
@@ -12,6 +13,9 @@ $paperless-color-green: #ADB96E !default;
 
 // Override global Sass variables from the /utilities folder
 @use "bulma/sass" as bulma with (
+  $navbar-background-color: $paperless-color-green,
+  //lighten($paperless-color-green, 10%),
+  //hsl(93, 40%, 76%),
   $scheme-main: yellow
   //$paperless-color-green
   //$grey-dark: $brown,
@@ -22,9 +26,12 @@ $paperless-color-green: #ADB96E !default;
 //@use "bulma/sass" as bulma;
 @use "bulma/sass/utilities/mixins" as bm;
 
+
 // use import for backward compatibility without namespaces
 @import "fresh/core";
 @import "custom/custom";
+//@import "custom/fresh/navbar";
+
 //@forward "custom/fresh/navbar";
 
 
@@ -43,6 +50,7 @@ $paperless-color-green: #ADB96E !default;
   //padding: $box-padding
   //box-sizing: content-box
   //flex-direction: column
+  background-color: bulma.$navbar-background-color;
   display: flex;
 }
 
