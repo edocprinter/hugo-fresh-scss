@@ -181,11 +181,8 @@ $navbar-theme-color: var(--bulma-navbar-background-color);
     box-shadow: none;
 
     a.navbar-item:focus, a.navbar-item:hover {
-        //background-color: var(--bulma-navbar-background-color);
-        //background-color: lighten(var(--bulma-navbar-background-color), 10%);
-        background-color: lighten(bulma.$navbar-background-color, 10%);
-        //var(--bulma-navbar-tab-hover-background-color);
-        //border-bottom-color: var(--bulma-navbar-tab-hover-border-bottom-color);
+        color: black;
+        background-color: bulma.$navbar-background-color;
     }
 
     @include mixins.until(480px) {

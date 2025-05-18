@@ -3,17 +3,16 @@
 {{- $subtitle := index $section1 "subtitle" }}
 {{- $tiles    := index $section1 "tiles" }}
 <section class="section section-feature-grey is-medium" id="section1">
+
   <div class="container">
+    <!--
     <div class="title-wrapper has-text-centered">
       <h2 class="title is-2">{{ $title }}</h2>
       <h3 class="subtitle is-5 is-muted">{{ $subtitle }}</h3>
       <div class="divider is-centered"></div>
     </div>
+-->
 
-    <div style="width:400px; height:400px; position:relative; border-width:2px; border-style:solid">
-      <button class="button is-danger navbar-banner-box2">Button</button>
-
-    </div>
 
     <div class="content-wrapper">
       <div class="columns">
@@ -24,7 +23,7 @@
               <h4>{{ .title }}</h4>
             </div>
             <div class="card-icon">
-                <img src="{{ printf "images/illustrations/icons/%s.svg" .icon | relURL }}">
+                <img src="{{ printf "images/icons/%s" .icon | relURL }}">
             </div>
             <div class="card-text">
                 <p>{{ .text }}</p>
