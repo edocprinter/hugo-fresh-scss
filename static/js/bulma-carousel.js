@@ -130,7 +130,7 @@ var offset = function offset(element) {
 
 // returns an element's width
 var width = function width(element) {
-	return element.getBoundingClientRect().width || element.offsetWidth;
+	return element.offsetWidth; //element.getBoundingClientRect().width  || element.offsetWidth;
 };
 // returns an element's height
 var height = function height(element) {
@@ -644,31 +644,41 @@ var bulmaCarousel = function (_EventEmitter) {
   }, {
     key: '_setDimensions',
     value: function _setDimensions() {
-      var _this3 = this;
+        var _this3 = this;
 
-      if (!this.options.vertical) {
-        if (this.options.centerMode) {
-          this._ui.wrapper.style.padding = '0px ' + this.options.centerPadding;
+        if (!this.options.vertical) {
+            if (this.options.centerMode) {
+                this._ui.wrapper.style.padding = '0px ' + this.options.centerPadding;
+            }
+        } else {
+            this._ui.wrapper.style.height = Object(__WEBPACK_IMPORTED_MODULE_1__utils_css__["c" /* outerHeight */])(this._slides[0]) * this.slidesToShow;
+            if (this.options.centerMode) {
+                this._ui.wrapper.style.padding = this.options.centerPadding + ' 0px';
+            }
         }
-      } else {
-        this._ui.wrapper.style.height = Object(__WEBPACK_IMPORTED_MODULE_1__utils_css__["c" /* outerHeight */])(this._slides[0]) * this.slidesToShow;
-        if (this.options.centerMode) {
-          this._ui.wrapper.style.padding = this.options.centerPadding + ' 0px';
+
+        this._wrapperWidth = Object(__WEBPACK_IMPORTED_MODULE_1__utils_css__["e" /* width */])(this._ui.wrapper);
+        this._wrapperHeight = Object(__WEBPACK_IMPORTED_MODULE_1__utils_css__["c" /* outerHeight */])(this._ui.wrapper);
+
+        if (Number.isInteger(this.options.cardwidth)) {
+            this._slideWidth = this.options.cardwidth;
+            //this._currentBreakpoint.slidesToShow =  Math.ceil(this._wrapperWidth / this._slideWidth);
+            //this.slidesToScroll
+
+            this._containerWidth = Math.ceil(this._slideWidth * this._slides.length);
+            this._ui.container.style.width = this._containerWidth + 'px';
+        } else {
+
+            if (!this.options.vertical) {
+                this._slideWidth = Math.ceil(this._wrapperWidth / this.slidesToShow);
+                this._containerWidth = Math.ceil(this._slideWidth * this._slides.length);
+                this._ui.container.style.width = this._containerWidth + 'px';
+            } else {
+                this._slideWidth = Math.ceil(this._wrapperWidth);
+                this._containerHeight = Math.ceil(Object(__WEBPACK_IMPORTED_MODULE_1__utils_css__["c" /* outerHeight */])(this._slides[0]) * this._slides.length);
+                this._ui.container.style.height = this._containerHeight + 'px';
+            }
         }
-      }
-
-      this._wrapperWidth = Object(__WEBPACK_IMPORTED_MODULE_1__utils_css__["e" /* width */])(this._ui.wrapper);
-      this._wrapperHeight = Object(__WEBPACK_IMPORTED_MODULE_1__utils_css__["c" /* outerHeight */])(this._ui.wrapper);
-
-      if (!this.options.vertical) {
-        this._slideWidth = Math.ceil(this._wrapperWidth / this.slidesToShow);
-        this._containerWidth = Math.ceil(this._slideWidth * this._slides.length);
-        this._ui.container.style.width = this._containerWidth + 'px';
-      } else {
-        this._slideWidth = Math.ceil(this._wrapperWidth);
-        this._containerHeight = Math.ceil(Object(__WEBPACK_IMPORTED_MODULE_1__utils_css__["c" /* outerHeight */])(this._slides[0]) * this._slides.length);
-        this._ui.container.style.height = this._containerHeight + 'px';
-      }
 
       this._slides.forEach(function (slide) {
         slide.style.width = _this3._slideWidth + 'px';

@@ -4,6 +4,8 @@
 {{- else }}
   {{ $inServerMode = .Site.IsServer }}
 {{- end }}
+
+<link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
 {{- $sass         := "style.scss" }}
 {{- $cssTarget    := "css/style.css" }}
 {{- $cssOpts      := cond ($inServerMode) (dict "targetPath" $cssTarget "enableSourceMap" true "transpiler" "dartsass"  "includePaths" (slice "bulma") ) 

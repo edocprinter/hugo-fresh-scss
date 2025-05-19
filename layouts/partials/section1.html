@@ -1,74 +1,83 @@
 {{- $section1 := .Site.Params.section1 }}
-{{- $title    := index $section1 "title" }}
+{{- $title := index $section1 "title" }}
 {{- $subtitle := index $section1 "subtitle" }}
-{{- $tiles    := index $section1 "tiles" }}
+{{- $tiles := index $section1 "tiles" }}
 <section class="section section-feature-grey is-medium" id="section1">
 
-  <div class="container">
-    <!--
-    <div class="title-wrapper has-text-centered">
-      <h2 class="title is-2">{{ $title }}</h2>
-      <h3 class="subtitle is-5 is-muted">{{ $subtitle }}</h3>
-      <div class="divider is-centered"></div>
-    </div>
--->
 
-    <div class="container">
-      <!-- Start Carousel -->
-      <div id="carousel-demo" class="slider">
-        <div class="item-1">
-          <!-- Slide Content -->
-          DIV 1
-        </div>
-        <div class="item-2">
-          <!-- Slide Content -->
-          DIV 2
-        </div>
-        <div class="item-3">
-          DIV 3
-          <!-- Slide Content -->
-        </div>
-        <div class="item-4">
-          DIV 4
-          <!-- Slide Content -->
-        </div>
-      </div>
-      <!-- End Carousel -->
-    </div>
-
-    <div class="content-wrapper">
-      <div class="columns">
-        {{- range $tiles }}
-        <div class="column is-one-third">
-          <div class="feature-card is-bordered has-text-centered revealOnScroll delay-1" data-animation="fadeInLeft">
-            <div class="card-title">
-              <h4>{{ .title }}</h4>
-            </div>
-            <div class="card-icon">
+<section class="section" style="overflow: hidden; ">
+    <div class="container swiffy-slider slider-item-show3 slider-nav-caretfill slider-item-reveal slider-nav-animation slider-nav-animation-appear">
+      <div id="carousel-products" class="slider-container">
+          {{- range $tiles }}
+            <div class="feature-card is-bordered has-text-centered" >
+              <div class="card-title">
+                <h4>{{ .title }}</h4>
+              </div>
+              <div class="card-icon">
                 <img src="{{ printf "images/icons/%s" .icon | relURL }}">
-            </div>
-            <div class="card-text">
+              </div>
+              <div class="card-text">
                 <p>{{ .text }}</p>
+              </div>
+              <div class="card-action">
+                <a href="{{ .url }}" class="button btn-align-md accent-btn raised">{{ .buttonText }}</a>
+              </div>
             </div>
-            <div class="card-action">
-              <a href="{{ .url }}" class="button btn-align-md accent-btn raised">{{ .buttonText }}</a>
-            </div>
-          </div>
-        </div>
-        {{- end }}
+
+          {{- end }}
       </div>
+
+      <button type="button" class="slider-nav"></button>
+      <button type="button" class="slider-nav slider-nav-next"></button>
+
+{{/*      <div class="slider-indicators">*/}}
+{{/*        <button class="active"></button>*/}}
+{{/*        <button></button>*/}}
+{{/*        <button></button>*/}}
+{{/*      </div>*/}}
     </div>
-  </div>
 </section>
 
 
+<!--
+    <div class="container">
+      <div class="columns">
+          {{- range $tiles }}
+            <div class="column is-one-third">
+              <div class="feature-card is-bordered has-text-centered revealOnScroll delay-1"
+                   data-animation="fadeInLeft">
+                <div class="card-title">
+                  <h4>{{ .title }}</h4>
+                </div>
+                <div class="card-icon">
+                  <img src="{{ printf "images/icons/%s" .icon | relURL }}">
+                </div>
+                <div class="card-text">
+                  <p>{{ .text }}</p>
+                </div>
+                <div class="card-action">
+                  <a href="{{ .url }}" class="button btn-align-md accent-btn raised">{{ .buttonText }}</a>
+                </div>
+              </div>
+            </div>
+          {{- end }}
+      </div>
+    </div>
+-->
+</section>
+
+
+
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Your script code here
-        bulmaCarousel.attach('#carousel-demo', {
-            slidesToScroll: 1,
-            slidesToShow: 4
-        });
-    });
+    // document.addEventListener('DOMContentLoaded', function () {
+    //     // Your script code here
+    //    bulmaCarousel.attach('#carousel-products', {
+    //        slidesToScroll: 1,
+    //        slidesToShow: 1,
+    //        infinite: true,
+    //        pagination: true,
+    //        cardwidth: 300
+    //    });
+    // });
 
 </script>

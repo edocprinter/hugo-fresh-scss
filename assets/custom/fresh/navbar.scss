@@ -28,6 +28,11 @@ $navbar-theme-color: var(--bulma-navbar-background-color);
 .hero .navbar.is-fresh {
    background-color: bulma.$navbar-background-color;
 }
+// lighten($paperless-color-green, 10%),
+
+.swiffy-slider {
+    --swiffy-slider-nav-light: #{lighten(bulma.$navbar-background-color, 10%)};
+}
 
 //Navbar
 .navbar.is-fresh {
