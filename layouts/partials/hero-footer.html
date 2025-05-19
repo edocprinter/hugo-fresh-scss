@@ -1,19 +1,19 @@
 {{- $hero        := .Site.Params.hero }}
 {{- $clientLogos := index $hero "clientlogos" }}
-<div class="hero-foot mb-20">
-  <div class="container">
-    <div class="tabs is-centered">
-      <ul>
-        {{- range $clientLogos }}
-        <li>
-         <a {{ if .url }} href="{{ .url }}" {{ end }}>
-            <img class="partner-logo" src="{{ printf "images/logos/%s" .logo | relURL }}">
-          </a> 
-
-          <div> This is a test</div>
-        </li>
-        {{- end }}
-      </ul>
-    </div>
-  </div>
-</div>
+{{/*<div class="hero-foot mb-20">*/}}
+{{/*  <div class="container">*/}}
+{{/*    <div class="tabs is-centered">*/}}
+{{/*      <ul>*/}}
+{{/*        {{- range $clientLogos }}*/}}
+{{/*        <li>*/}}
+{{/*         <a {{ if .url }} href="{{ .url }}" {{ end }}>*/}}
+{{/*            <img class="partner-logo" src="{{ printf "images/logos/%s" .logo | relURL }}">*/}}
+{{/*          </a> */}}
+{{/**/}}
+{{/*          <div> This is a test</div>*/}}
+{{/*        </li>*/}}
+{{/*        {{- end }}*/}}
+{{/*      </ul>*/}}
+{{/*    </div>*/}}
+{{/*  </div>*/}}
+{{/*</div>*/}}

@@ -4,42 +4,39 @@
 {{- $tiles := index $section1 "tiles" }}
 <section class="section section-feature-grey is-medium" id="section1">
 
-
-<section class="section" style="overflow: hidden; ">
-    <div class="container swiffy-slider slider-item-show3 slider-nav-caretfill slider-item-reveal slider-nav-animation slider-nav-animation-appear">
-      <div id="carousel-products" class="slider-container">
-          {{- range $tiles }}
-            <div class="feature-card is-bordered has-text-centered" >
-              <div class="card-title">
-                <h4>{{ .title }}</h4>
-              </div>
-              <div class="card-icon">
-                <img src="{{ printf "images/icons/%s" .icon | relURL }}">
-              </div>
-              <div class="card-text">
-                <p>{{ .text }}</p>
-              </div>
-              <div class="card-action">
-                <a href="{{ .url }}" class="button btn-align-md accent-btn raised">{{ .buttonText }}</a>
-              </div>
+  <div
+      class="container swiffy-slider slider-item-show3 slider-nav-caretfill slider-item-reveal slider-nav-animation slider-nav-animation-appear">
+    <div id="carousel-products" class="slider-container">
+        {{- range $tiles }}
+          <div class="feature-card is-bordered has-text-centered">
+            <div class="card-title">
+              <h4>{{ .title }}</h4>
             </div>
+            <div class="card-icon">
+              <img src="{{ printf "images/icons/%s" .icon | relURL }}">
+            </div>
+            <div class="card-text">
+              <p>{{ .text }}</p>
+            </div>
+            <div class="card-action">
+              <a href="{{ .url }}" class="button btn-align-md accent-btn raised">{{ .buttonText }}</a>
+            </div>
+          </div>
 
-          {{- end }}
-      </div>
-
-      <button type="button" class="slider-nav"></button>
-      <button type="button" class="slider-nav slider-nav-next"></button>
-
-{{/*      <div class="slider-indicators">*/}}
-{{/*        <button class="active"></button>*/}}
-{{/*        <button></button>*/}}
-{{/*        <button></button>*/}}
-{{/*      </div>*/}}
+        {{- end }}
     </div>
-</section>
 
+    <button type="button" class="slider-nav"></button>
+    <button type="button" class="slider-nav slider-nav-next"></button>
 
-<!--
+      {{/*      <div class="slider-indicators">*/}}
+      {{/*        <button class="active"></button>*/}}
+      {{/*        <button></button>*/}}
+      {{/*        <button></button>*/}}
+      {{/*      </div>*/}}
+  </div>
+
+  <!--
     <div class="container">
       <div class="columns">
           {{- range $tiles }}
@@ -65,8 +62,6 @@
     </div>
 -->
 </section>
-
-
 
 <script>
     // document.addEventListener('DOMContentLoaded', function () {
