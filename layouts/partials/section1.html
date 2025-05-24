@@ -4,13 +4,12 @@
 {{- $tiles := index $section1 "tiles" }}
 <section class="section section-feature-grey is-medium" id="section1">
 
-  <div
-      class="container swiffy-slider slider-item-show3 slider-nav-caretfill slider-item-reveal slider-nav-animation slider-nav-animation-appear">
+  <div class="swiffy-slider slider-item-show3 slider-nav-outside slider-nav-visible slider-nav-caretfill slider-item-reveal slider-nav-animation slider-nav-animation-appear">
     <div id="carousel-products" class="slider-container">
-        {{- range $tiles }}
+        {{- range $k, $v := $tiles }}
           <div class="feature-card is-bordered has-text-centered">
             <div class="card-title">
-              <h4>{{ .title }}</h4>
+              <h4>{{ $k }} {{ .title }}</h4>
             </div>
             <div class="card-icon">
               <img src="{{ printf "images/icons/%s" .icon | relURL }}">
@@ -36,6 +35,8 @@
       {{/*      </div>*/}}
   </div>
 
+
+  <button onclick="scrollTest()" class="button is-primary">Primary</button>
   <!--
     <div class="container">
       <div class="columns">
@@ -62,8 +63,72 @@
     </div>
 -->
 </section>
+{{/**/}}
+{{/*<div class="columns is-vcentered is-mobile is-centered">*/}}
+{{/*  <div class="column is-8 has-background-info has-text-centered ">*/}}
+{{/*    <p class="bd-notification is-primary">First column</p>*/}}
+{{/*  </div>*/}}
+{{/*  <div class="column has-background-info is-justify-content-center">*/}}
+{{/*    <p class="bd-notification is-primary is-centered">*/}}
+{{/*      Second column with more content. This is so you can see the vertical*/}}
+{{/*      alignment.*/}}
+{{/*    </p>*/}}
+{{/*  </div>*/}}
+{{/*</div>*/}}
 
 <script>
+
+    function scrollTest() {
+        const slider1 = document.querySelector(".swiffy-slider");
+        const container = slider1.querySelector(".slider-container");
+        const firstEl = container.firstElementChild;
+        const lastEl = container.lastElementChild;
+
+
+        const scrollPosition = container.scrollLeft; // Store scroll position
+
+        // container.scrollBy({
+        //     left: 200,
+        //     behavior:  "smooth"
+        // });
+        //alert(firstel.style.order + ' ' +  lastel.style.order)
+
+        // if (firstel !== undefined && firstel !== null ) {
+        //     firstel.style.order = Number(lastel.style.order) + 1;
+        // }
+        if (firstEl !== undefined && firstEl !== null ) {
+            //childElementCount
+          //  container.style.zIndex = -1;
+           // container.removeChild(firstEl);
+
+            const clone2move = firstEl.cloneNode(true);
+
+           // firstEl.classList.add('slider-item2append');
+            //newElement.textContent = 'Newly Appended Element';
+          //  container.style.opacity = 0;
+            container.appendChild(clone2move);
+
+            container.scrollBy({
+                left: 300,
+                behavior:  "smooth"
+            });
+          //  container.scrollLeft = scrollPosition; // Restore scroll position
+
+         //   container.style.opacity = 1;
+            requestAnimationFrame(() => {
+           //    firstEl.classList.add('visible');
+                container.style.opacity = 1;
+            });
+
+            container.removeChild(firstEl);
+            container.style.transition = 'all 2s';
+            container.style.opacity = 1;
+            //lastel.style.order = Number(firstel.style.order) -1;
+         //   container.style.zIndex = 0;
+         //   container.scrollLeft = 0;
+        }
+    }
+
     // document.addEventListener('DOMContentLoaded', function () {
     //     // Your script code here
     //    bulmaCarousel.attach('#carousel-products', {

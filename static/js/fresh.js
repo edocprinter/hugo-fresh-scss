@@ -1,4 +1,5 @@
 //Preloader
+
 $(window).on('load', function() { // makes sure the whole site is loaded 
     $('#status').fadeOut(); // will first fade out the loading animation 
     $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website. 
@@ -63,10 +64,11 @@ $(document).ready(function(){
     feather.replace();
 
     //reveal elements on scroll so animations trigger the right way
-    var $window           = $(window),
-        win_height_padded = $window.height() * 1.1,
-        isTouch           = Modernizr.touch;
+    var $window           = $(window);
 
+    //     win_height_padded = $window.height() * 1.1;
+    // //isTouch           = Modernizr.touch;
+    //
     $window.on('scroll', revealOnScroll);
 
     function revealOnScroll() {
@@ -135,7 +137,7 @@ $(document).ready(function(){
                     } else {
                         $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
                         $target.focus(); // Set focus again
-                    };
+                    }
                 });
             }
         }

@@ -28,6 +28,11 @@ $navbar-theme-color: var(--bulma-navbar-background-color);
 .hero .navbar.is-fresh {
    background-color: bulma.$navbar-background-color;
 }
+
+.hero-body .image {
+    max-height: 50vh;
+}
+
 // lighten($paperless-color-green, 10%),
 
 .swiffy-slider {
@@ -58,6 +63,7 @@ $navbar-theme-color: var(--bulma-navbar-background-color);
     //Brand
     .navbar-brand {
         min-height: 4rem;
+        margin-left: 2rem;
 
         .navbar-item img,
         .navbar-item svg {
