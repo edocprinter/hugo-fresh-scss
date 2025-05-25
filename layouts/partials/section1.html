@@ -108,6 +108,12 @@
           //  container.style.opacity = 0;
             container.appendChild(clone2move);
 
+            container.addEventListener("scrollend", (event) => {
+                // Action to be performed after scrolling has stopped
+                container.removeChild(firstEl);
+                console.log('Scrolling ended!');
+            });
+
             container.scrollBy({
                 left: 300,
                 behavior:  "smooth"
@@ -115,14 +121,14 @@
           //  container.scrollLeft = scrollPosition; // Restore scroll position
 
          //   container.style.opacity = 1;
-            requestAnimationFrame(() => {
-           //    firstEl.classList.add('visible');
-                container.style.opacity = 1;
-            });
+           requestAnimationFrame(() => {
+              firstEl.classList.add('visible');
+               container.style.opacity = 1;
+           });
 
-            container.removeChild(firstEl);
-            container.style.transition = 'all 2s';
-            container.style.opacity = 1;
+           // container.removeChild(firstEl);
+          //  container.style.transition = 'all 2s';
+            //container.style.opacity = 1;
             //lastel.style.order = Number(firstel.style.order) -1;
          //   container.style.zIndex = 0;
          //   container.scrollLeft = 0;
