@@ -1,3 +1,28 @@
+
+const tween = function (start, end, duration, easing) {
+    let delta = end - start;
+    let startTime;
+
+    if (window.performance && window.performance.now) {
+        startTime = performance.now();
+    }
+    else if (Date.now) {
+        startTime = Date.now();
+    }
+    else {
+        startTime = new Date().getTime();
+    }
+
+    const tweenLoop = function (time) {
+        var t = (!time ? 0 : time - startTime);
+        var factor = easing(null, t, 0, 1, duration);
+        w.scrollLeft = start + delta * factor;
+        if (t < duration && w.scrollLeft != end)
+            requestAnimationFrame(tweenLoop);
+    }
+    tweenLoop();
+};
+
 const main = function() {
 
     var sel = function (id) {
@@ -11,34 +36,6 @@ const main = function() {
 
     var e, o;
 
-
-    // var updateV = function (time) {
-    //     v.value = w.scrollLeft;
-    //     requestAnimationFrame(updateV);
-    // };
-    // updateV();
-
-    var tween = function (start, end, duration, easing) {
-        var delta = end - start;
-        var startTime;
-        if (window.performance && window.performance.now) {
-            startTime = performance.now();
-        }
-        else if (Date.now) {
-            startTime = Date.now();
-        }
-        else {
-            startTime = new Date().getTime();
-        }
-        var tweenLoop = function (time) {
-            var t = (!time ? 0 : time - startTime);
-            var factor = easing(null, t, 0, 1, duration);
-            w.scrollLeft = start + delta * factor;
-            if (t < duration && w.scrollLeft != end)
-                requestAnimationFrame(tweenLoop);
-        }
-        tweenLoop();
-    };
 
     sel('btnR').addEventListener('click', function (e) {
         tween(0, w.scrollWidth - w.offsetWidth, 2000, easings[s.value]);

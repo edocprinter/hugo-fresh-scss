@@ -87,25 +87,10 @@
 
         const scrollPosition = container.scrollLeft; // Store scroll position
 
-        // container.scrollBy({
-        //     left: 200,
-        //     behavior:  "smooth"
-        // });
-        //alert(firstel.style.order + ' ' +  lastel.style.order)
 
-        // if (firstel !== undefined && firstel !== null ) {
-        //     firstel.style.order = Number(lastel.style.order) + 1;
-        // }
         if (firstEl !== undefined && firstEl !== null ) {
-            //childElementCount
-          //  container.style.zIndex = -1;
-           // container.removeChild(firstEl);
-
             const clone2move = firstEl.cloneNode(true);
 
-           // firstEl.classList.add('slider-item2append');
-            //newElement.textContent = 'Newly Appended Element';
-          //  container.style.opacity = 0;
             container.appendChild(clone2move);
 
             container.addEventListener("scrollend", (event) => {
@@ -114,24 +99,18 @@
                 console.log('Scrolling ended!');
             });
 
-            container.scrollBy({
-                left: 300,
-                behavior:  "smooth"
-            });
-          //  container.scrollLeft = scrollPosition; // Restore scroll position
+            container.scrollLeft += 300;
+            // container.scrollBy({
+            //     left: 300,
+            //     behavior:  "smooth"
+            // });
 
-         //   container.style.opacity = 1;
            requestAnimationFrame(() => {
               firstEl.classList.add('visible');
                container.style.opacity = 1;
            });
 
-           // container.removeChild(firstEl);
-          //  container.style.transition = 'all 2s';
-            //container.style.opacity = 1;
-            //lastel.style.order = Number(firstel.style.order) -1;
-         //   container.style.zIndex = 0;
-         //   container.scrollLeft = 0;
+
         }
     }
 
