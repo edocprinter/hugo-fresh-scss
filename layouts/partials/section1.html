@@ -91,24 +91,28 @@
         if (firstEl !== undefined && firstEl !== null ) {
             const clone2move = firstEl.cloneNode(true);
 
+            clone2move.classList.add('slide-visible');
             container.appendChild(clone2move);
 
-            container.addEventListener("scrollend", (event) => {
-                // Action to be performed after scrolling has stopped
-                container.removeChild(firstEl);
-                console.log('Scrolling ended!');
-            });
-
-            container.scrollLeft += 300;
-            // container.scrollBy({
-            //     left: 300,
-            //     behavior:  "smooth"
+            // container.addEventListener("scrollend", (event) => {
+            //     // Action to be performed after scrolling has stopped
+            //     container.removeChild(firstEl);
+            //     console.log('Scrolling ended!');
             // });
 
-           requestAnimationFrame(() => {
-              firstEl.classList.add('visible');
-               container.style.opacity = 1;
-           });
+            // to avoid immediate removal effect, please set the initial position of the first elem of the container to negative
+           // container.scrollLeft += 320;
+            container.scrollBy({
+                left: 320,
+                behavior:  "smooth"
+            });
+            container.removeChild(firstEl);
+
+
+           // requestAnimationFrame(() => {
+           //    firstEl.classList.add('visible');
+           //     container.style.opacity = 1;
+           // });
 
 
         }

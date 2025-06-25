@@ -18,6 +18,7 @@
 }
 
 .slider-container {
+    scroll-behavior: smooth;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
