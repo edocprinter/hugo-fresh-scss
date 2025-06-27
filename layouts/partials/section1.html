@@ -6,6 +6,8 @@
 
   <div class="swiffy-slider slider-item-show3 slider-nav-outside slider-nav-visible slider-nav-caretfill slider-item-reveal slider-nav-animation slider-nav-animation-appear">
     <div id="carousel-products" class="slider-container">
+
+
         {{- range $k, $v := $tiles }}
           <div class="feature-card is-bordered has-text-centered">
             <div class="card-title">
@@ -37,6 +39,8 @@
 
 
   <button onclick="scrollTest()" class="button is-primary">Primary</button>
+  <button onclick="updateScrollInfo()" class="button is-primary">UpdateInfo</button>
+  <span id="scrollInfo" > </span>
   <!--
     <div class="container">
       <div class="columns">
@@ -77,37 +81,71 @@
 {{/*</div>*/}}
 
 <script>
+    function updateScrollInfo() {
+        const scrollInfo = document.querySelector("#scrollInfo");
+        const slider1 = document.querySelector(".swiffy-slider");
+        const container = slider1.querySelector(".slider-container");
+
+        if (scrollInfo !== undefined && scrollInfo !== null) {
+            scrollInfo.innerText =  `left is ${container.scrollLeft} ${container.scrollRight} ${container.scrollWidth}`;
+        }
+
+    }
 
     function scrollTest() {
         const slider1 = document.querySelector(".swiffy-slider");
         const container = slider1.querySelector(".slider-container");
         const firstEl = container.firstElementChild;
         const lastEl = container.lastElementChild;
-
+        const scrollInfo = document.querySelector("#scrollInfo");
 
         const scrollPosition = container.scrollLeft; // Store scroll position
 
-
         if (firstEl !== undefined && firstEl !== null ) {
             const clone2move = firstEl.cloneNode(true);
+            const whiteCard = document.createElement("div");
+
+            whiteCard.classList.add('feature-card');
+            container.prepend(whiteCard);
+            //firstEl.replaceWith(whiteCard);
+
 
             clone2move.classList.add('slide-visible');
+            //clone2move.style.transform = 'translateX(-256px)';
+            //clone2move.style.aspect-ratio = 'unset';
             container.appendChild(clone2move);
 
-            // container.addEventListener("scrollend", (event) => {
-            //     // Action to be performed after scrolling has stopped
-            //     container.removeChild(firstEl);
-            //     console.log('Scrolling ended!');
-            // });
+
+            whiteCard.setAttribute('style', 'aspect-ratio: unset; width: 240px; min-width: 0px; min-height: 320px');
+
+            whiteCard.style.transition = 'all 10s linear';
+            //whiteCard.setAttribute('style', 'aspect-ratio: unset; width: 240px; min-width: 0px; min-height: 320px');
+            whiteCard.style.width = '25px';
+
+            //firstEl.setAttribute('style', 'aspect-ratio: unset; min-width: 0px');
+            //firstEl.style.width = '25px';
+            //firstEl.style.opacity = 0;
+
+
+            //container.removeChild(firstEl);
+
+            function handleScrollend(event) {
+              // container.removeChild(firstEl);
+              //  container.appendChild(clone2move);
+                console.log('Scrolling ended!');
+
+                event.currentTarget.removeEventListener('scrollend', handleScrollend); // 'this' refers to the element
+            }
+
+           // container.addEventListener("scrollend", handleScrollend);
 
             // to avoid immediate removal effect, please set the initial position of the first elem of the container to negative
-           // container.scrollLeft += 320;
-            container.scrollBy({
-                left: 320,
-                behavior:  "smooth"
-            });
-            container.removeChild(firstEl);
-
+            // container.scrollLeft += 320;
+            // container.scrollBy({
+            //     left: 256,
+            //     behavior:  "smooth"
+            // });
+            //container.removeChild(firstEl);
 
            // requestAnimationFrame(() => {
            //    firstEl.classList.add('visible');

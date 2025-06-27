@@ -4,7 +4,7 @@
     width: 100%;
     --swiffy-slider-snap-align: center;
     --swiffy-slider-item-width: 100%;
-    --swiffy-slider-item-gap: 1rem;
+    --swiffy-slider-item-gap: 16px;
     --swiffy-slider-item-reveal: 0rem;
     --swiffy-slider-item-ratio: 2/1;
     --swiffy-slider-item-count: 1;
@@ -48,7 +48,7 @@
     --swiffy-slider-item-width: calc((100% - var(--swiffy-slider-item-reveal) - var(--swiffy-slider-item-gap-totalwidth)) / var(--swiffy-slider-item-count));
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
+   // scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     display: grid;
     align-items: center;
