@@ -23,8 +23,8 @@
               <a href="{{ .url }}" class="button btn-align-md accent-btn raised">{{ .buttonText }}</a>
             </div>
           </div>
-
         {{- end }}
+
     </div>
 
     <button type="button" class="slider-nav"></button>
@@ -103,31 +103,40 @@
 
         if (firstEl !== undefined && firstEl !== null ) {
             const clone2move = firstEl.cloneNode(true);
-            const whiteCard = document.createElement("div");
+            //const whiteCard = document.createElement("div");
 
-            whiteCard.classList.add('feature-card');
-            container.prepend(whiteCard);
-            //firstEl.replaceWith(whiteCard);
+            firstEl.classList.add('feature-card', 'shrinkable-card');
+          //  container.prepend(whiteCard);
+          // firstEl.replaceWith(whiteCard);
 
 
             clone2move.classList.add('slide-visible');
             //clone2move.style.transform = 'translateX(-256px)';
             //clone2move.style.aspect-ratio = 'unset';
             container.appendChild(clone2move);
+            requestAnimationFrame(() => {
+                firstEl.classList.add('shrinkable-hidden');
+                firstEl.addEventListener("transitionend", (event) => {
+                    event.currentTarget.remove();
+                })
+            });
 
+           // container.removeChild(firstEl);
 
-            whiteCard.setAttribute('style', 'aspect-ratio: unset; width: 240px; min-width: 0px; min-height: 320px');
+       //     container.style.transform = `translateX(-256px)`;
 
-            whiteCard.style.transition = 'all 10s linear';
-            //whiteCard.setAttribute('style', 'aspect-ratio: unset; width: 240px; min-width: 0px; min-height: 320px');
-            whiteCard.style.width = '25px';
+            // whiteCard.setAttribute('style', 'aspect-ratio: unset; width: 240px; min-width: 0px; min-height: 320px');
+            //
+            // whiteCard.style.transition = 'all 10s linear';
+            // //whiteCard.setAttribute('style', 'aspect-ratio: unset; width: 240px; min-width: 0px; min-height: 320px');
+            // whiteCard.style.width = '25px';
 
             //firstEl.setAttribute('style', 'aspect-ratio: unset; min-width: 0px');
             //firstEl.style.width = '25px';
             //firstEl.style.opacity = 0;
 
 
-            //container.removeChild(firstEl);
+
 
             function handleScrollend(event) {
               // container.removeChild(firstEl);
@@ -140,7 +149,7 @@
            // container.addEventListener("scrollend", handleScrollend);
 
             // to avoid immediate removal effect, please set the initial position of the first elem of the container to negative
-            // container.scrollLeft += 320;
+            //container.scrollLeft += 320;
             // container.scrollBy({
             //     left: 256,
             //     behavior:  "smooth"
