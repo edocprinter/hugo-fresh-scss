@@ -41,6 +41,7 @@
 
 
   <button onclick="scrollTest()" class="button is-primary">Primary</button>
+  <button onclick="scrollRight()" class="button is-primary">Scroll to Right</button>
   <button onclick="updateScrollInfo()" class="button is-primary">UpdateInfo</button>
   <span id="scrollInfo" > </span>
   <!--
@@ -164,6 +165,75 @@
            //    firstEl.classList.add('visible');
            //     container.style.opacity = 1;
            // });
+
+
+        }
+    }
+
+    function scrollRight() {
+        const slider1 = document.querySelector(".swiffy-slider");
+        const container = slider1.querySelector(".slider-container");
+        const firstEl = container.firstElementChild;
+        const lastEl = container.lastElementChild;
+
+        if (lastEl !== undefined && lastEl !== null ) {
+            if (lastEl.classList.contains('shrinkable-card')) return;
+
+            const clone2move = lastEl.cloneNode(true);
+            clone2move.classList.add('slide-visible');
+            lastEl.classList.add('shrinkable-card');
+
+            clone2move.classList.add('shrinkable-card', 'shrinkable-prepend');
+            container.prepend(clone2move);
+
+            requestAnimationFrame(() => {
+                clone2move.classList.add('shrinkable-prepend-hidden');
+                clone2move.addEventListener("transitionend", (event) => {
+                    clone2move.classList.remove('shrinkable-card', 'shrinkable-prepend', 'shrinkable-prepend-hidden');
+                    lastEl.remove();
+                    //event.currentTarget.remove();
+                })
+            });
+
+            // container.removeChild(firstEl);
+
+            //     container.style.transform = `translateX(-256px)`;
+
+            // whiteCard.setAttribute('style', 'aspect-ratio: unset; width: 240px; min-width: 0px; min-height: 320px');
+            //
+            // whiteCard.style.transition = 'all 10s linear';
+            // //whiteCard.setAttribute('style', 'aspect-ratio: unset; width: 240px; min-width: 0px; min-height: 320px');
+            // whiteCard.style.width = '25px';
+
+            //firstEl.setAttribute('style', 'aspect-ratio: unset; min-width: 0px');
+            //firstEl.style.width = '25px';
+            //firstEl.style.opacity = 0;
+
+
+
+
+            function handleScrollend(event) {
+                // container.removeChild(firstEl);
+                //  container.appendChild(clone2move);
+                console.log('Scrolling ended!');
+
+                event.currentTarget.removeEventListener('scrollend', handleScrollend); // 'this' refers to the element
+            }
+
+            // container.addEventListener("scrollend", handleScrollend);
+
+            // to avoid immediate removal effect, please set the initial position of the first elem of the container to negative
+            //container.scrollLeft += 320;
+            // container.scrollBy({
+            //     left: 256,
+            //     behavior:  "smooth"
+            // });
+            //container.removeChild(firstEl);
+
+            // requestAnimationFrame(() => {
+            //    firstEl.classList.add('visible');
+            //     container.style.opacity = 1;
+            // });
 
 
         }
