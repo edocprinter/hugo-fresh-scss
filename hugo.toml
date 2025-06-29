@@ -50,3 +50,9 @@
     # [[module.imports.mounts]]
     # source = "sass/utilities"
     # target = "assets/bulma/sass/utilities"
+
+[params]
+  [params.carousel]
+  cardWidth = 240
+  cardGap = 16
+  cardOffset = 256

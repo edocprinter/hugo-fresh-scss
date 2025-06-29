@@ -2,11 +2,13 @@
 {{- $title := index $section1 "title" }}
 {{- $subtitle := index $section1 "subtitle" }}
 {{- $tiles := index $section1 "tiles" }}
+{{- $cardOffset := index .Site.Params.carousel "cardOffset" -}}
+{{- $cardOffset := .Site.Params.carousel.cardOffset -}}
+
 <section class="section section-feature-grey is-medium" id="section1">
 
   <div class="swiffy-slider slider-item-show3 slider-nav-outside slider-nav-visible slider-nav-caretfill slider-item-reveal slider-nav-animation slider-nav-animation-appear">
     <div id="carousel-products" class="slider-container">
-
 
         {{- range $k, $v := $tiles }}
           <div class="feature-card is-bordered has-text-centered">
@@ -102,20 +104,22 @@
         const scrollPosition = container.scrollLeft; // Store scroll position
 
         if (firstEl !== undefined && firstEl !== null ) {
+
+            if (firstEl.classList.contains('shrinkable-card')) return;
+
             const clone2move = firstEl.cloneNode(true);
             //const whiteCard = document.createElement("div");
-
-            firstEl.classList.add('feature-card', 'shrinkable-card');
-          //  container.prepend(whiteCard);
-          // firstEl.replaceWith(whiteCard);
-
 
             clone2move.classList.add('slide-visible');
             //clone2move.style.transform = 'translateX(-256px)';
             //clone2move.style.aspect-ratio = 'unset';
             container.appendChild(clone2move);
+            firstEl.classList.add('shrinkable-card');
+
             requestAnimationFrame(() => {
                 firstEl.classList.add('shrinkable-hidden');
+                //let ml = parseInt(window.getComputedStyle(firstEl).getPropertyValue('margin-left'));
+                firstEl.style.marginLeft = '-{{- $cardOffset -}}px';
                 firstEl.addEventListener("transitionend", (event) => {
                     event.currentTarget.remove();
                 })
