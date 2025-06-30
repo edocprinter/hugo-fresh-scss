@@ -99,23 +99,38 @@ initialization is by :=
 
   <div id="navbarMenu" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" href="/">Home Start</a>
-      <div class="navbar-item has-dropdown is-hoverable">
-        <!-- navbar-link has different padding style, use navbar-item is ok (which has no auto arrow only)-->
-        <a class="navbar-item is-arrowless" href="/start/">
-          Docs... </a>
-        <div class="navbar-dropdown is-boxed has-shadow">
-          <a class="navbar-item" href="/start"> Overview </a>
-          <a class="navbar-item" href="/modifiers/"> Modifiers </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item" href="/basics/"> Columns </a>
-          <a class="navbar-item" href="container/"> Layout </a>
-          <a class="navbar-item" href="general/"> Form </a>
-          <a class="navbar-item" href="box/"> Elements </a>
-          <a class="navbar-item" href="/breadcrumb/">
-            Components </a>
+      {{- range $navbar }}
+        {{- if .sublinks }}
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-item" href="{{- .url -}}">{{- .title -}}</a>
+          <div class="navbar-dropdown is-boxed has-shadow">
+          {{- range .sublinks }}
+            <a class="navbar-item" href="{{- .url -}}">{{- .title -}}</a>
+          {{- end }}
+          </div>
         </div>
-      </div>
+        {{- else }}
+        <a class="navbar-item" href="{{- .url -}}">{{- .title -}}</a>
+        {{- end }}
+      {{- end }}
+
+{{/*      <a class="navbar-item" href="/">Home Start</a>*/}}
+{{/*      <div class="navbar-item has-dropdown is-hoverable">*/}}
+{{/*        <!-- navbar-link has different padding style, use navbar-item is ok (which has no auto arrow only)-->*/}}
+{{/*        <a class="navbar-item is-arrowless" href="/start/">*/}}
+{{/*          Docs... </a>*/}}
+{{/*        <div class="navbar-dropdown is-boxed has-shadow">*/}}
+{{/*          <a class="navbar-item" href="/start"> Overview </a>*/}}
+{{/*          <a class="navbar-item" href="/modifiers/"> Modifiers </a>*/}}
+{{/*          <hr class="navbar-divider">*/}}
+{{/*          <a class="navbar-item" href="/basics/"> Columns </a>*/}}
+{{/*          <a class="navbar-item" href="container/"> Layout </a>*/}}
+{{/*          <a class="navbar-item" href="general/"> Form </a>*/}}
+{{/*          <a class="navbar-item" href="box/"> Elements </a>*/}}
+{{/*          <a class="navbar-item" href="/breadcrumb/">*/}}
+{{/*            Components </a>*/}}
+{{/*        </div>*/}}
+{{/*      </div>*/}}
     </div>
 
     <div class="navbar-end">

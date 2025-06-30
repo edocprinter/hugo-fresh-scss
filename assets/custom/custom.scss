@@ -12,3 +12,8 @@
     --bulma-section-padding-medium: 3rem 3rem;
     --bulma-section-padding-large: 3rem 3rem;
 }
+
+
+.swiffy-slider {
+    --swiffy-slider-nav-light: #{lighten(bulma.$navbar-background-color, 10%)};
+}
