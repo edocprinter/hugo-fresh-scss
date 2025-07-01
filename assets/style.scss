@@ -10,6 +10,7 @@ $brown: #757763;
 $beige-light: #d0d1cd;
 $beige-lighter: #eff0eb;
 $paperless-color-green: #ADB96E !default;
+$fresh-btn-info-color: var(--bulma-info-85);
 
 // Override global Sass variables from the /utilities folder
 @use "bulma/sass" as bulma with (
