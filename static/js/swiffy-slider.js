@@ -1,4 +1,4 @@
-const swiffyslider = function() {
+const swiffyslider = function () {
     return {
         version: "1.6.0",
         init(rootElement = document.body) {
@@ -7,7 +7,7 @@ const swiffyslider = function() {
 
         initSlider(sliderElement) {
             sliderElement.querySelectorAll(".slider-nav").forEach(navElement =>
-                navElement.addEventListener("click", () => this.slide(sliderElement, navElement.classList.contains("slider-nav-next")), { passive: true })
+                navElement.addEventListener("click", () => this.slide(sliderElement, navElement.classList.contains("slider-nav-next")), {passive: true})
             );
             sliderElement.querySelectorAll(".slider-indicators").forEach((indicatorElement) => {
                 indicatorElement.addEventListener("click", () => this.slideToByIndicator());
@@ -38,6 +38,14 @@ const swiffyslider = function() {
         },
 
         slide(sliderElement, next = true) {
+            if (next) {
+                this.slideLeft(sliderElement);
+            } else {
+                this.slideRight(sliderElement);
+            }
+
+            return;
+
             const container = sliderElement.querySelector(".slider-container");
             const fullpage = sliderElement.classList.contains("slider-nav-page");
             const noloop = sliderElement.classList.contains("slider-nav-noloop");
@@ -63,6 +71,58 @@ const swiffyslider = function() {
             });
         },
 
+        slideLeft(slider1) {
+            const container = slider1.querySelector(".slider-container");
+            const firstEl = container.firstElementChild;
+            const lastEl = container.lastElementChild;
+
+            if (firstEl !== undefined && firstEl !== null) {
+                if (firstEl.classList.contains('shrinkable-card')) return;
+
+                const clone2move = firstEl.cloneNode(true);
+
+                clone2move.classList.add('slide-visible');
+                container.appendChild(clone2move);
+                firstEl.classList.add('shrinkable-card');
+
+                requestAnimationFrame(() => {
+                    firstEl.classList.add('shrinkable-hidden');
+                    //firstEl.style.marginLeft = '-{{- $cardOffset -}}px';
+                    firstEl.addEventListener("transitionend", (event) => {
+                        event.currentTarget.remove();
+                    })
+                });
+
+            }
+        },
+
+        slideRight(slider1) {
+            const container = slider1.querySelector(".slider-container");
+            const firstEl = container.firstElementChild;
+            const lastEl = container.lastElementChild;
+
+            if (lastEl !== undefined && lastEl !== null) {
+                if (lastEl.classList.contains('shrinkable-card')) return;
+
+                const clone2move = lastEl.cloneNode(true);
+                clone2move.classList.add('slide-visible');
+                lastEl.classList.add('shrinkable-card');
+
+                clone2move.classList.add('shrinkable-card', 'shrinkable-prepend');
+                container.prepend(clone2move);
+
+                requestAnimationFrame(() => {
+                    clone2move.classList.add('shrinkable-prepend-hidden');
+                    clone2move.addEventListener("transitionend", (event) => {
+                        clone2move.classList.remove('shrinkable-card', 'shrinkable-prepend', 'shrinkable-prepend-hidden');
+                        lastEl.remove();
+                        //event.currentTarget.remove();
+                    })
+                });
+
+            }
+        },
+
         slideToByIndicator() {
             const indicator = window.event.target;
             const indicatorIndex = Array.from(indicator.parentElement.children).indexOf(indicator);
@@ -82,15 +142,17 @@ const swiffyslider = function() {
                 left: (scrollStep * slideIndex),
                 behavior: nodelay ? "auto" : "smooth"
             });
-        },
+        }
+        ,
 
         onSlideEnd(sliderElement, delegate, timeout = 125) {
             let isScrolling;
             sliderElement.querySelector(".slider-container").addEventListener("scroll", () => {
                 window.clearTimeout(isScrolling);
                 isScrolling = setTimeout(delegate, timeout);
-            }, { capture: false, passive: true });
-        },
+            }, {capture: false, passive: true});
+        }
+        ,
 
         autoPlay(sliderElement, timeout, autopause) {
             timeout = timeout < 750 ? 750 : timeout;
@@ -106,14 +168,15 @@ const swiffyslider = function() {
                 ["mouseover", "touchstart"].forEach((event) => {
                     sliderElement.addEventListener(event, () => {
                         window.clearTimeout(autoplayTimer);
-                    }, { once: true, passive: true });
+                    }, {once: true, passive: true});
                 });
                 ["mouseout", "touchend"].forEach((event) => {
-                    sliderElement.addEventListener(event, autoplayer, { once: true, passive: true });
+                    sliderElement.addEventListener(event, autoplayer, {once: true, passive: true});
                 });
             }
             return autoplayTimer;
-        },
+        }
+        ,
 
         handleIndicators(sliderElement) {
             if (!sliderElement) return;
@@ -128,7 +191,8 @@ const swiffyslider = function() {
                 scrollIndicators[activeIndicator].classList.add("active");
             });
         }
-    };
+    }
+        ;
 }();
 
 window.swiffyslider = swiffyslider;

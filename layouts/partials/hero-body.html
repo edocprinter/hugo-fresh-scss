@@ -4,6 +4,8 @@
 {{- $buttonText := index $hero "buttontext" }}
 {{- $buttonLink := index $hero "buttonlink" }}
 {{- $image      := index $hero "image" }}
+{{- $buttons    := index $hero "buttons" }}
+
 <div class="hero-body">
   <div class="container">
     <div class="columns is-vcentered">
@@ -16,13 +18,27 @@
           {{ . }}
         </h2>
         {{ end }}
-        <p>
-          <a class="button cta rounded primary-btn raised" href="{{ $buttonLink }}">
-            {{ $buttonText }}
+
+
+
+
+          {{- range $buttons }}
+        <div class="mb-2">
+          <a class="button has-background-info-85 raised" title="{{ .urltitle }}" href="{{ .url }}">
+            <div class="columns is-vcentered">
+              <div class="column is-8" style="white-space: normal;">
+                  {{ .text }}
+              </div>
+              <div class="column is-4">
+                <img src="images/{{- .icon -}}" alt="Description">
+              </div>
+            </div>
           </a>
-        </p>
+        </div>
+          {{- end }}
+
       </div>
-      <div class="column is-4 is-offset-1">
+      <div class="column is-5"> <!-- is-offset-1"> -->
         <figure class="image is-square m-auto">
           <img src="{{ printf "images/%s" $image | relURL }}" alt="Description">
         </figure>
