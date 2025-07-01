@@ -11,7 +11,7 @@
     <div id="carousel-products" class="slider-container">
 
         {{- range $k, $v := $tiles }}
-          <div class="feature-card is-bordered has-text-centered">
+          <div class="feature-card is-bordered has-text-centered raised">
             <div class="card-title">
               <h4>{{ $k }} {{ .title }}</h4>
             </div>
@@ -22,7 +22,7 @@
               <p>{{ .text }}</p>
             </div>
             <div class="card-action">
-              <a href="{{ .url }}" class="button btn-align-md accent-btn raised">{{ .buttonText }}</a>
+              <a href="{{ .url }}" class="button btn-align-md is-info has-background-info-85">{{ .buttonText }}</a>
             </div>
           </div>
         {{- end }}
@@ -40,10 +40,10 @@
   </div>
 
 
-  <button onclick="scrollTest()" class="button is-primary">Primary</button>
-  <button onclick="scrollRight()" class="button is-primary">Scroll to Right</button>
-  <button onclick="updateScrollInfo()" class="button is-primary">UpdateInfo</button>
-  <span id="scrollInfo" > </span>
+{{/*  <button onclick="scrollTest()" class="button is-primary">Primary</button>*/}}
+{{/*  <button onclick="scrollRight()" class="button is-primary">Scroll to Right</button>*/}}
+{{/*  <button onclick="updateScrollInfo()" class="button is-primary">UpdateInfo</button>*/}}
+{{/*  <span id="scrollInfo" > </span>*/}}
   <!--
     <div class="container">
       <div class="columns">
@@ -70,184 +70,9 @@
     </div>
 -->
 </section>
-{{/**/}}
-{{/*<div class="columns is-vcentered is-mobile is-centered">*/}}
-{{/*  <div class="column is-8 has-background-info has-text-centered ">*/}}
-{{/*    <p class="bd-notification is-primary">First column</p>*/}}
-{{/*  </div>*/}}
-{{/*  <div class="column has-background-info is-justify-content-center">*/}}
-{{/*    <p class="bd-notification is-primary is-centered">*/}}
-{{/*      Second column with more content. This is so you can see the vertical*/}}
-{{/*      alignment.*/}}
-{{/*    </p>*/}}
-{{/*  </div>*/}}
-{{/*</div>*/}}
+
 
 <script>
-    function updateScrollInfo() {
-        const scrollInfo = document.querySelector("#scrollInfo");
-        const slider1 = document.querySelector(".swiffy-slider");
-        const container = slider1.querySelector(".slider-container");
 
-        if (scrollInfo !== undefined && scrollInfo !== null) {
-            scrollInfo.innerText =  `left is ${container.scrollLeft} ${container.scrollRight} ${container.scrollWidth}`;
-        }
-
-    }
-
-    function scrollTest() {
-        const slider1 = document.querySelector(".swiffy-slider");
-        const container = slider1.querySelector(".slider-container");
-        const firstEl = container.firstElementChild;
-        const lastEl = container.lastElementChild;
-        const scrollInfo = document.querySelector("#scrollInfo");
-
-        const scrollPosition = container.scrollLeft; // Store scroll position
-
-        if (firstEl !== undefined && firstEl !== null ) {
-
-            if (firstEl.classList.contains('shrinkable-card')) return;
-
-            const clone2move = firstEl.cloneNode(true);
-            //const whiteCard = document.createElement("div");
-
-            clone2move.classList.add('slide-visible');
-            //clone2move.style.transform = 'translateX(-256px)';
-            //clone2move.style.aspect-ratio = 'unset';
-            container.appendChild(clone2move);
-            firstEl.classList.add('shrinkable-card');
-
-            requestAnimationFrame(() => {
-                firstEl.classList.add('shrinkable-hidden');
-                //let ml = parseInt(window.getComputedStyle(firstEl).getPropertyValue('margin-left'));
-                firstEl.style.marginLeft = '-{{- $cardOffset -}}px';
-                firstEl.addEventListener("transitionend", (event) => {
-                    event.currentTarget.remove();
-                })
-            });
-
-           // container.removeChild(firstEl);
-
-       //     container.style.transform = `translateX(-256px)`;
-
-            // whiteCard.setAttribute('style', 'aspect-ratio: unset; width: 240px; min-width: 0px; min-height: 320px');
-            //
-            // whiteCard.style.transition = 'all 10s linear';
-            // //whiteCard.setAttribute('style', 'aspect-ratio: unset; width: 240px; min-width: 0px; min-height: 320px');
-            // whiteCard.style.width = '25px';
-
-            //firstEl.setAttribute('style', 'aspect-ratio: unset; min-width: 0px');
-            //firstEl.style.width = '25px';
-            //firstEl.style.opacity = 0;
-
-
-
-
-            function handleScrollend(event) {
-              // container.removeChild(firstEl);
-              //  container.appendChild(clone2move);
-                console.log('Scrolling ended!');
-
-                event.currentTarget.removeEventListener('scrollend', handleScrollend); // 'this' refers to the element
-            }
-
-           // container.addEventListener("scrollend", handleScrollend);
-
-            // to avoid immediate removal effect, please set the initial position of the first elem of the container to negative
-            //container.scrollLeft += 320;
-            // container.scrollBy({
-            //     left: 256,
-            //     behavior:  "smooth"
-            // });
-            //container.removeChild(firstEl);
-
-           // requestAnimationFrame(() => {
-           //    firstEl.classList.add('visible');
-           //     container.style.opacity = 1;
-           // });
-
-
-        }
-    }
-
-    function scrollRight() {
-        const slider1 = document.querySelector(".swiffy-slider");
-        const container = slider1.querySelector(".slider-container");
-        const firstEl = container.firstElementChild;
-        const lastEl = container.lastElementChild;
-
-        if (lastEl !== undefined && lastEl !== null ) {
-            if (lastEl.classList.contains('shrinkable-card')) return;
-
-            const clone2move = lastEl.cloneNode(true);
-            clone2move.classList.add('slide-visible');
-            lastEl.classList.add('shrinkable-card');
-
-            clone2move.classList.add('shrinkable-card', 'shrinkable-prepend');
-            container.prepend(clone2move);
-
-            requestAnimationFrame(() => {
-                clone2move.classList.add('shrinkable-prepend-hidden');
-                clone2move.addEventListener("transitionend", (event) => {
-                    clone2move.classList.remove('shrinkable-card', 'shrinkable-prepend', 'shrinkable-prepend-hidden');
-                    lastEl.remove();
-                    //event.currentTarget.remove();
-                })
-            });
-
-            // container.removeChild(firstEl);
-
-            //     container.style.transform = `translateX(-256px)`;
-
-            // whiteCard.setAttribute('style', 'aspect-ratio: unset; width: 240px; min-width: 0px; min-height: 320px');
-            //
-            // whiteCard.style.transition = 'all 10s linear';
-            // //whiteCard.setAttribute('style', 'aspect-ratio: unset; width: 240px; min-width: 0px; min-height: 320px');
-            // whiteCard.style.width = '25px';
-
-            //firstEl.setAttribute('style', 'aspect-ratio: unset; min-width: 0px');
-            //firstEl.style.width = '25px';
-            //firstEl.style.opacity = 0;
-
-
-
-
-            function handleScrollend(event) {
-                // container.removeChild(firstEl);
-                //  container.appendChild(clone2move);
-                console.log('Scrolling ended!');
-
-                event.currentTarget.removeEventListener('scrollend', handleScrollend); // 'this' refers to the element
-            }
-
-            // container.addEventListener("scrollend", handleScrollend);
-
-            // to avoid immediate removal effect, please set the initial position of the first elem of the container to negative
-            //container.scrollLeft += 320;
-            // container.scrollBy({
-            //     left: 256,
-            //     behavior:  "smooth"
-            // });
-            //container.removeChild(firstEl);
-
-            // requestAnimationFrame(() => {
-            //    firstEl.classList.add('visible');
-            //     container.style.opacity = 1;
-            // });
-
-
-        }
-    }
-
-    // document.addEventListener('DOMContentLoaded', function () {
-    //     // Your script code here
-    //    bulmaCarousel.attach('#carousel-products', {
-    //        slidesToScroll: 1,
-    //        slidesToShow: 1,
-    //        infinite: true,
-    //        pagination: true,
-    //        cardwidth: 300
-    //    });
-    // });
 
 </script>
